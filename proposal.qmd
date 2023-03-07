@@ -3,6 +3,7 @@ title: "Project title"
 subtitle: "Proposal"
 format: html
 editor: visual
+---≥
 ---
 
 ```{r}
@@ -18,9 +19,15 @@ library(tidyverse)
 
 -   Identify the source of the data.
 
+The source of the data is ai-jobs.net. It is a website for posting tech jobs and alayzing trends in job data.
+
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
 
+The site collects salary information anonymously from professionals all over the world in the AI/ML/Data Science space and makes it publicly available. The vast majority of the data was collected in 2023, 2022, and 2021.
+
 -   Write a brief description of the observations.
+
+Each observation records the person's job info, including salary info. This includes work year, employment type, job title, salary, employee residence, company location, etc..
 
 ## Research question
 
@@ -30,7 +37,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
@@ -42,6 +49,9 @@ library(tidyverse)
 
 ```{r}
 #| label: load-data-1
+#| message: false
+
+salaries <- read_csv("data/salaries.csv")
 
 # add code here
 ```
@@ -64,7 +74,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
@@ -98,7 +108,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
