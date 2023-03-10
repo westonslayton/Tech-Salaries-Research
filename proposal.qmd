@@ -76,7 +76,7 @@ salaries <- read_csv("data/salaries.csv")
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
-    -   
+    -    How has the demographic and amount of the nation\'s immigration population changed over these five decades?
 
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
