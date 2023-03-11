@@ -1,9 +1,9 @@
 ---
-title: "Project title"
-subtitle: "Proposal"
+title: "Project Proposal"
+author: "Stat Wizards: Amelia, Sophia, Weston, and Elliot"
+date: "3/10/23"
 format: html
 editor: visual
----≥
 ---
 
 ```{r}
@@ -27,23 +27,41 @@ The site collects salary information anonymously from professionals all over the
 
 -   Write a brief description of the observations.
 
-Each observation records the person's job info, including salary info. This includes work year, employment type, job title, salary, employee residence, company location, etc..
+Each observation records the person's job info. This includes work year, employment type, job title, salary, employee residence, company location, etc..
 
 ## Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
+How does your job within the field of tech (data scientist, machine learning engineer, data analyst), along with whether or not you work in the US, affect your salary?
+
+Another possible question:
+
+What is the probability that someone is a data scientists or a machine learning engineer based on their salary and whether or not they work the US?
+
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
+This research topic aims to understand various tech jobs and how they pay on average. It also intends to identify whether or not working for a US based company would affect your salary. My hypotheses is that US-based workers will have higher mean salaries, and that Data science/analyst jobs will have lower salaries on average than machine learning jobs.
+
 -   Identify the types of variables in your research question. Categorical? Quantitative?
+
+We would most likely use the salary_in_usd variable as our response variable, which is quantitative, along with categorical explanatory variables including job_title and employee_residence.
 
 ## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
+    https://www.projectpro.io/article/machine-learning-engineer-vs-data-scientist/534
+
 -   Provide a one paragraph summary about the article.
 
+    "According to [Payscale](https://www.payscale.com/research/US/Job=Data_Scientist/Salary/3eb9c016/Early-Career "Payscale"), the salary of Data Scientists lie between the range of \$85K and \$134K. On the other hand,[machine learning engineers earn somewhere between \$93K and \$149K ](https://www.payscale.com/research/US/Job=Machine_Learning_Engineer/Salary " machine learning engineers earn somewhere between $93K and $149K "). These figures are purely survey-based and may vary from place to place, company to company."
+
+    The article says that machine learning engineers tend to have higher average salaries, because they tend to be software engineers that also have data science knowledge. However, it also says that it varies greatly place to place.
+
 -   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+
+    My research question builds on the article provided by also including whether the worker lives in the US or not.
 
 ## Glimpse of data
 
@@ -53,7 +71,9 @@ Each observation records the person's job info, including salary info. This incl
 
 salaries <- read_csv("data/salaries.csv")
 
-# add code here
+glimpse(salaries)
+
+
 ```
 
 # Data 2
@@ -107,7 +127,9 @@ salaries <- read_csv("data/salaries.csv")
 ```{r}
 #| label: load-data-2
 
-mirgration <- read.csv("data/migrationdata.csv")
+migration <- read.csv("data/migrationdata.csv")
+
+glimpse(migration)
 ```
 
 # Data 3
@@ -162,4 +184,6 @@ This article discusses how FiveThirtyEight predicts matches and derives their ex
 #| label: load-data-3
 
 soccer <- read.csv("data/spi_matches_latest.csv")
+
+glimpse(soccer)
 ```
