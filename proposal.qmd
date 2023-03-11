@@ -1,12 +1,9 @@
 ---
-<<<<<<< HEAD
-title: "Stat Wizards Project"
+title: "Stat Wizards Project Proposal"
 subtitle: "Proposal"
-=======
-title: "Project Proposal"
 author: "Stat Wizards: Amelia, Sophia, Weston, and Elliot"
 date: "3/10/23"
->>>>>>> e2b32938500182392119c1e940b66ce1ca3dc740
+
 format: html
 editor: visual
 ---
@@ -60,7 +57,7 @@ We would most likely use the salary_in_usd variable as our response variable, wh
 
 -   Provide a one paragraph summary about the article.
 
-    "According to [Payscale](https://www.payscale.com/research/US/Job=Data_Scientist/Salary/3eb9c016/Early-Career "Payscale"), the salary of Data Scientists lie between the range of \$85K and \$134K. On the other hand,[machine learning engineers earn somewhere between \$93K and \$149K ](https://www.payscale.com/research/US/Job=Machine_Learning_Engineer/Salary " machine learning engineers earn somewhere between $93K and $149K "). These figures are purely survey-based and may vary from place to place, company to company."
+    "According to [Payscale](https://www.payscale.com/research/US/Job=Data_Scientist/Salary/3eb9c016/Early-Career "Payscale"), the salary of Data Scientists lie between the range of \$85K and \$134K. On the other hand,\[machine learning engineers earn somewhere between \$93K and \$149K \](https://www.payscale.com/research/US/Job=Machine_Learning_Engineer/Salary" machine learning engineers earn somewhere between \$93K and \$149K "). These figures are purely survey-based and may vary from place to place, company to company."
 
     The article says that machine learning engineers tend to have higher average salaries, because they tend to be software engineers that also have data science knowledge. However, it also says that it varies greatly place to place.
 
@@ -117,7 +114,7 @@ glimpse(salaries)
 
 -   Find one published credible article on the topic you are interested in researching.
 
-    -   ○      <https://www.pewresearch.org/hispanic/2015/09/28/chapter-5-u-s-foreign-born-population-trends/>
+    -   <https://www.pewresearch.org/hispanic/2015/09/28/chapter-5-u-s-foreign-born-population-trends/>
 
 -   Provide a one paragraph summary about the article.
 

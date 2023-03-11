@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Stat Wizards: Amelia, Sophia, Weston, and Elliot">
+<meta name="dcterms.date" content="2023-03-10">
 
-<title>Stat Wizards Project</title>
+<title>Stat Wizards Project Proposal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -195,7 +197,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Stat Wizards Project</h1>
+<h1 class="title">Stat Wizards Project Proposal</h1>
 <p class="subtitle lead">Proposal</p>
 </div>
 
@@ -203,7 +205,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Stat Wizards: Amelia, Sophia, Weston, and Elliot </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 10, 2023</p>
+    </div>
+  </div>
     
   </div>
   
@@ -228,22 +242,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Write a brief description of the observations.</li>
 </ul>
-<p>Each observation records the person’s job info, including salary info. This includes work year, employment type, job title, salary, employee residence, company location, etc..</p>
+<p>Each observation records the person’s job info. This includes work year, employment type, job title, salary, employee residence, company location, etc..</p>
 </section>
 <section id="research-question" class="level2">
 <h2 class="anchored" data-anchor-id="research-question">Research question</h2>
 <ul>
-<li><p>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</p></li>
-<li><p>A description of the research topic along with a concise statement of your hypotheses on this topic.</p></li>
-<li><p>Identify the types of variables in your research question. Categorical? Quantitative?</p></li>
+<li>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</li>
 </ul>
+<p>How does your job within the field of tech (data scientist, machine learning engineer, data analyst), along with whether or not you work in the US, affect your salary?</p>
+<p>Another possible question:</p>
+<p>What is the probability that someone is a data scientists or a machine learning engineer based on their salary and whether or not they work the US?</p>
+<ul>
+<li>A description of the research topic along with a concise statement of your hypotheses on this topic.</li>
+</ul>
+<p>This research topic aims to understand various tech jobs and how they pay on average. It also intends to identify whether or not working for a US based company would affect your salary. My hypotheses is that US-based workers will have higher mean salaries, and that Data science/analyst jobs will have lower salaries on average than machine learning jobs.</p>
+<ul>
+<li>Identify the types of variables in your research question. Categorical? Quantitative?</li>
+</ul>
+<p>We would most likely use the salary_in_usd variable as our response variable, which is quantitative, along with categorical explanatory variables including job_title and employee_residence.</p>
 </section>
 <section id="literature" class="level2">
 <h2 class="anchored" data-anchor-id="literature">Literature</h2>
 <ul>
-<li><p>Find one published credible article on the topic you are interested in researching.</p></li>
-<li><p>Provide a one paragraph summary about the article.</p></li>
-<li><p>In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.</p></li>
+<li><p>Find one published credible article on the topic you are interested in researching.</p>
+<p>https://www.projectpro.io/article/machine-learning-engineer-vs-data-scientist/534</p></li>
+<li><p>Provide a one paragraph summary about the article.</p>
+<p>“According to <a href="https://www.payscale.com/research/US/Job=Data_Scientist/Salary/3eb9c016/Early-Career" title="Payscale">Payscale</a>, the salary of Data Scientists lie between the range of $85K and $134K. On the other hand,[machine learning engineers earn somewhere between $93K and $149K ](https://www.payscale.com/research/US/Job=Machine_Learning_Engineer/Salary” machine learning engineers earn somewhere between $93K and $149K “). These figures are purely survey-based and may vary from place to place, company to company.”</p>
+<p>The article says that machine learning engineers tend to have higher average salaries, because they tend to be software engineers that also have data science knowledge. However, it also says that it varies greatly place to place.</p></li>
+<li><p>In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.</p>
+<p>My research question builds on the article provided by also including whether the worker lives in the US or not.</p></li>
 </ul>
 </section>
 <section id="glimpse-of-data" class="level2">
@@ -251,7 +278,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>salaries <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/salaries.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(salaries)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 3,046
+Columns: 11
+$ work_year          &lt;dbl&gt; 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 202…
+$ experience_level   &lt;chr&gt; "MI", "SE", "SE", "SE", "SE", "SE", "SE", "SE", "SE…
+$ employment_type    &lt;chr&gt; "FT", "FT", "FT", "FT", "FT", "FT", "FT", "FT", "FT…
+$ job_title          &lt;chr&gt; "Financial Data Analyst", "Data Scientist", "Data S…
+$ salary             &lt;dbl&gt; 130000, 205000, 140000, 297300, 198200, 141288, 941…
+$ salary_currency    &lt;chr&gt; "USD", "USD", "USD", "USD", "USD", "USD", "USD", "U…
+$ salary_in_usd      &lt;dbl&gt; 130000, 205000, 140000, 297300, 198200, 141288, 941…
+$ employee_residence &lt;chr&gt; "US", "US", "US", "US", "US", "US", "US", "US", "US…
+$ remote_ratio       &lt;dbl&gt; 100, 0, 0, 100, 100, 0, 0, 100, 100, 0, 0, 100, 100…
+$ company_location   &lt;chr&gt; "US", "US", "US", "US", "US", "US", "US", "US", "US…
+$ company_size       &lt;chr&gt; "L", "M", "M", "M", "M", "M", "M", "M", "M", "M", "…</code></pre>
+</div>
 </div>
 </section>
 </section>
@@ -297,7 +339,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><p>Find one published credible article on the topic you are interested in researching.</p>
 <ul>
-<li>○&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.pewresearch.org/hispanic/2015/09/28/chapter-5-u-s-foreign-born-population-trends/" class="uri">https://www.pewresearch.org/hispanic/2015/09/28/chapter-5-u-s-foreign-born-population-trends/</a></li>
+<li><a href="https://www.pewresearch.org/hispanic/2015/09/28/chapter-5-u-s-foreign-born-population-trends/" class="uri">https://www.pewresearch.org/hispanic/2015/09/28/chapter-5-u-s-foreign-born-population-trends/</a></li>
 </ul></li>
 <li><p>Provide a one paragraph summary about the article.</p>
 <ul>
@@ -312,7 +354,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="glimpse-of-data-1" class="level2">
 <h2 class="anchored" data-anchor-id="glimpse-of-data-1">Glimpse of data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mirgration <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/migrationdata.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>migration <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/migrationdata.csv"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(migration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 237
+Columns: 11
+$ Country.Origin.Name      &lt;chr&gt; "Afghanistan", "Albania", "Algeria", "America…
+$ Country.Origin.Code      &lt;chr&gt; "AFG", "ALB", "DZA", "ASM", "AND", "AGO", "AI…
+$ Migration.by.Gender.Name &lt;chr&gt; "Total", "Total", "Total", "Total", "Total", …
+$ Migration.by.Gender.Code &lt;chr&gt; "TOT", "TOT", "TOT", "TOT", "TOT", "TOT", "TO…
+$ Country.Dest.Name        &lt;chr&gt; "United States", "United States", "United Sta…
+$ Country.Dest.Code        &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "US…
+$ X1960..1960.             &lt;chr&gt; "293", "10047", "322", "2519", "440", "141", …
+$ X1970..1970.             &lt;chr&gt; "207", "10865", "533", "11528", "3", "316", "…
+$ X1980..1980.             &lt;chr&gt; "4832", "7963", "4843", "9604", "1548", "1347…
+$ X1990..1990.             &lt;chr&gt; "30146", "5844", "5577", "1870", "57", "3194"…
+$ X2000..2000.             &lt;chr&gt; "44893", "40555", "11717", "16339", "5", "841…</code></pre>
+</div>
 </div>
 </section>
 </section>
@@ -367,7 +426,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="glimpse-of-data-2" class="level2">
 <h2 class="anchored" data-anchor-id="glimpse-of-data-2">Glimpse of data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>soccer <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/spi_matches_latest.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>soccer <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/spi_matches_latest.csv"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(soccer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 11,410
+Columns: 23
+$ season      &lt;int&gt; 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019…
+$ date        &lt;chr&gt; "2019-03-01", "2019-03-01", "2019-03-01", "2019-03-01", "2…
+$ league_id   &lt;int&gt; 1979, 1979, 1979, 1979, 1979, 1979, 1979, 1979, 1979, 1979…
+$ league      &lt;chr&gt; "Chinese Super League", "Chinese Super League", "Chinese S…
+$ team1       &lt;chr&gt; "Shandong Luneng", "Guangzhou Evergrande", "Shanghai Green…
+$ team2       &lt;chr&gt; "Guizhou Renhe", "Tianjin Quanujian", "Shanghai SIPG", "Be…
+$ spi1        &lt;dbl&gt; 48.22, 65.59, 39.81, 32.25, 38.24, 31.99, 35.18, 51.59, 65…
+$ spi2        &lt;dbl&gt; 37.83, 39.99, 60.08, 54.82, 40.45, 38.75, 45.83, 36.92, 36…
+$ prob1       &lt;dbl&gt; 0.5755, 0.7832, 0.2387, 0.2276, 0.4403, 0.3966, 0.3400, 0.…
+$ prob2       &lt;dbl&gt; 0.1740, 0.0673, 0.5203, 0.5226, 0.2932, 0.3252, 0.3715, 0.…
+$ probtie     &lt;dbl&gt; 0.2505, 0.1495, 0.2410, 0.2498, 0.2665, 0.2783, 0.2885, 0.…
+$ proj_score1 &lt;dbl&gt; 1.75, 2.58, 1.22, 1.10, 1.57, 1.41, 1.22, 1.92, 2.74, 1.81…
+$ proj_score2 &lt;dbl&gt; 0.84, 0.62, 1.89, 1.79, 1.24, 1.25, 1.29, 0.78, 0.58, 0.78…
+$ importance1 &lt;dbl&gt; 45.9, 77.1, 25.6, 35.8, 26.2, 40.5, 33.1, 51.4, 78.7, 46.3…
+$ importance2 &lt;dbl&gt; 22.1, 28.8, 63.4, 58.9, 21.3, 24.6, 41.0, 25.9, 24.3, 32.3…
+$ score1      &lt;int&gt; 1, 3, 0, 0, 2, 3, 1, 3, 1, 2, 0, 3, 3, 1, 2, 1, 4, 0, 0, 1…
+$ score2      &lt;int&gt; 0, 0, 4, 1, 2, 1, 1, 2, 0, 2, 4, 3, 2, 0, 1, 2, 3, 1, 1, 2…
+$ xg1         &lt;dbl&gt; 1.39, 0.49, 0.57, 1.12, 2.77, 1.33, 0.84, 3.28, 1.74, 1.64…
+$ xg2         &lt;dbl&gt; 0.26, 0.45, 2.76, 0.97, 3.17, 0.65, 1.65, 0.62, 0.31, 1.20…
+$ nsxg1       &lt;dbl&gt; 2.05, 1.05, 0.80, 1.51, 1.05, 0.88, 1.29, 1.51, 2.16, 2.52…
+$ nsxg2       &lt;dbl&gt; 0.54, 0.75, 1.50, 0.94, 2.08, 1.72, 1.98, 0.41, 0.89, 0.53…
+$ adj_score1  &lt;dbl&gt; 1.05, 3.15, 0.00, 0.00, 2.10, 2.61, 1.05, 2.61, 1.05, 2.10…
+$ adj_score2  &lt;dbl&gt; 0.00, 0.00, 3.26, 1.05, 2.10, 1.05, 1.05, 2.10, 0.00, 2.10…</code></pre>
+</div>
 </div>
 
 
