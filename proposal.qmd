@@ -1,9 +1,8 @@
 ---
-title: "Project title"
+title: "Stat Wizards Project"
 subtitle: "Proposal"
 format: html
 editor: visual
----≥
 ---
 
 ```{r}

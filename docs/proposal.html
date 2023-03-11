@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Project title</title>
+<title>Stat Wizards Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -195,7 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project title</h1>
+<h1 class="title">Stat Wizards Project</h1>
 <p class="subtitle lead">Proposal</p>
 </div>
 
@@ -218,10 +218,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="introduction-and-data" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-and-data">Introduction and data</h2>
 <ul>
-<li><p>Identify the source of the data.</p></li>
-<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p></li>
-<li><p>Write a brief description of the observations.</p></li>
+<li>Identify the source of the data.</li>
 </ul>
+<p>The source of the data is ai-jobs.net. It is a website for posting tech jobs and alayzing trends in job data.</p>
+<ul>
+<li>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</li>
+</ul>
+<p>The site collects salary information anonymously from professionals all over the world in the AI/ML/Data Science space and makes it publicly available. The vast majority of the data was collected in 2023, 2022, and 2021.</p>
+<ul>
+<li>Write a brief description of the observations.</li>
+</ul>
+<p>Each observation records the person’s job info, including salary info. This includes work year, employment type, job title, salary, employee residence, company location, etc..</p>
 </section>
 <section id="research-question" class="level2">
 <h2 class="anchored" data-anchor-id="research-question">Research question</h2>
@@ -242,7 +249,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="glimpse-of-data" class="level2">
 <h2 class="anchored" data-anchor-id="glimpse-of-data">Glimpse of data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>salaries <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/salaries.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -251,31 +260,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="introduction-and-data-1" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-and-data-1">Introduction and data</h2>
 <ul>
-<li><p>Identify the source of the data.</p></li>
-<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p></li>
-<li><p>Write a brief description of the observations.</p></li>
+<li><p>Identify the source of the data.</p>
+<ul>
+<li>This data set is from the World Bank Databank.&nbsp;</li>
+</ul></li>
+<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p>
+<ul>
+<li>The data was originally collected from different national censuses; however, it was compiled by the World Bank.</li>
+</ul></li>
+<li><p>Write a brief description of the observations.</p>
+<ul>
+<li>This data set is split into five date intervals: the 1960, 1970, 1980, 1990, and 2000. In addition, this data set can be filtered by country as well as gender. However, we chose to look at all countries which data is provided for as well as both male and female immigrants.</li>
+</ul></li>
 </ul>
 </section>
 <section id="research-question-1" class="level2">
 <h2 class="anchored" data-anchor-id="research-question-1">Research question</h2>
 <ul>
-<li><p>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</p></li>
-<li><p>A description of the research topic along with a concise statement of your hypotheses on this topic.</p></li>
-<li><p>Identify the types of variables in your research question. Categorical? Quantitative?</p></li>
+<li><p>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</p>
+<ul>
+<li>How has the demographic and amount of the nation’s immigration population changed over these five decades?</li>
+</ul></li>
+<li><p>A description of the research topic along with a concise statement of your hypotheses on this topic.</p>
+<ul>
+<li><p>With this research question, we intend to investigate the growth in the number of immigrants to the U.S. and where they are coming from. Are the countries where the largest population of people migrating to the U.S. the same? Different? Are there trends across regions or continents? We will look at when/if there are major shifts in the country of origin or spikes in the number of immigrants.</p></li>
+<li><p>We expect that the number of people migrating to the U.S. overall increase across the countries, and the main countries they are coming from become increasingly non-European.</p></li>
+</ul></li>
+<li><p>Identify the types of variables in your research question. Categorical? Quantitative?</p>
+<ul>
+<li>In this data set, there are both categorical (country of origin, gender, country destination, etc) as well as quantitative variables (number of migrants to the US in that year)</li>
+</ul></li>
 </ul>
 </section>
 <section id="literature-1" class="level2">
 <h2 class="anchored" data-anchor-id="literature-1">Literature</h2>
 <ul>
-<li><p>Find one published credible article on the topic you are interested in researching.</p></li>
-<li><p>Provide a one paragraph summary about the article.</p></li>
-<li><p>In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.</p></li>
+<li><p>Find one published credible article on the topic you are interested in researching.</p>
+<ul>
+<li>○&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.pewresearch.org/hispanic/2015/09/28/chapter-5-u-s-foreign-born-population-trends/" class="uri">https://www.pewresearch.org/hispanic/2015/09/28/chapter-5-u-s-foreign-born-population-trends/</a></li>
+</ul></li>
+<li><p>Provide a one paragraph summary about the article.</p>
+<ul>
+<li>This article summarizes data collected by the pew research center on foreign-born U.S. population trends. From 1960-2000 there was an upward trend in the percentage of the foreign-born U.S. population (9.7 million to 31.1 million people respectively). Since 1970 there has been rapid growth, with 4.7% of the U.S. population being foreign-born in 1970 and, as of 2013, that number is up to 13.1%. In addition to this general increase, the demographic of the people migrating to the U.S. is different (what the data set we are looking at breaks down). A significant factor in this shift is the passage of the Immigration and Nationality act of 1965, which eliminated national or origin quotas and allowed immigrants from non-European countries to begin immigrating. For example, the top country in 1960 and 1970 which sent immigrants was Italy, and from 1980-2013 it is now Mexico. This research article then further investigates the state members of the foreign-born population live in, the language they speak, their age, and the amount of time they have spent living in the U.S.</li>
+</ul></li>
+<li><p>In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.</p>
+<ul>
+<li>While our research will build on this idea of examining, this article focuses on other internal domestic variables while we will focus mainly on the trends of people migrating. We intend to investigate further the trends this article touches on regarding the increased growth in immigration overall and the resulting change in demographics of that increased immigration population.</li>
+</ul></li>
 </ul>
 </section>
 <section id="glimpse-of-data-1" class="level2">
 <h2 class="anchored" data-anchor-id="glimpse-of-data-1">Glimpse of data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mirgration <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/migrationdata.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -284,31 +321,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="introduction-and-data-2" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-and-data-2">Introduction and data</h2>
 <ul>
-<li><p>Identify the source of the data.</p></li>
-<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p></li>
-<li><p>Write a brief description of the observations.</p></li>
+<li>Identify the source of the data.</li>
 </ul>
+<p>This data is from FiveThirtyEight, a data science platform created by Nate Silver</p>
+<ul>
+<li>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</li>
+</ul>
+<p>The data is updated daily based on soccer club match schedules. Because this is a collection of the latest matches, it dates back to 2019.</p>
+<ul>
+<li>Write a brief description of the observations.</li>
+</ul>
+<p>Each observation in the dataset is one game. The dataset contains the details about each match (date, teams playing, etc), along with FiveThirtyEight’s predictions for goals scored, percentage chance each team wins, and the actual score if the game has been completed already.</p>
 </section>
 <section id="research-question-2" class="level2">
 <h2 class="anchored" data-anchor-id="research-question-2">Research question</h2>
 <ul>
-<li><p>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</p></li>
-<li><p>A description of the research topic along with a concise statement of your hypotheses on this topic.</p></li>
-<li><p>Identify the types of variables in your research question. Categorical? Quantitative?</p></li>
+<li>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</li>
 </ul>
+<p>How accurate is FiveThirtyEight’s model in regards to their expected goals stat? What is the average margin that they are off by?</p>
+<p>Different direction with same dataset: What are the most successful soccer clubs of the last 3 years by win percentage?</p>
+<ul>
+<li>A description of the research topic along with a concise statement of your hypotheses on this topic.</li>
+</ul>
+<p>We are investigating the efficacy of soccer predictions, as FiveThirtyEight is largely regarded as the most comprehensive predictive model for sports games. We want to understand how reliable the predictions FiveThirtyEight makes are. Sports are difficult to make predictions for, so wed predict that there is a fair deal of error in these predictions.</p>
+<ul>
+<li>Identify the types of variables in your research question. Categorical? Quantitative?</li>
+</ul>
+<p>Largely Quantitative</p>
 </section>
 <section id="literature-2" class="level2">
 <h2 class="anchored" data-anchor-id="literature-2">Literature</h2>
 <ul>
-<li><p>Find one published credible article on the topic you are interested in researching.</p></li>
-<li><p>Provide a one paragraph summary about the article.</p></li>
-<li><p>In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.</p></li>
+<li>Find one published credible article on the topic you are interested in researching.</li>
+</ul>
+<p>https://fivethirtyeight.com/methodology/how-our-club-soccer-predictions-work/</p>
+<ul>
+<li>Provide a one paragraph summary about the article.</li>
+</ul>
+<p>This article discusses how FiveThirtyEight predicts matches and derives their expected goals and power index ratings. Based on previous match success, FiveThirtyEight updates what they call a SPI, or Soccer Power Index for each team that encompasses the relative strength of each team. Because goals do not always accurately reflect the performance of teams in an individual game, FiveThirtyEight bases their SPI on a stat called adjusted goals, which adjusts for overall team performance. With SPI, FiveThirtyEight predicts the percentage chance a match ends in a win for either team or in a draw. They also predict expected goals for each match. This part is not relevant to our research, but they also forecast the odds of teams winning the league they compete in based on their record and SPI strength.</p>
+<ul>
+<li><p>In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.</p>
+<p>The article describes how their model is derived. With our research we intend to analyze how good their model is, something that the article does not discuss.</p></li>
 </ul>
 </section>
 <section id="glimpse-of-data-2" class="level2">
 <h2 class="anchored" data-anchor-id="glimpse-of-data-2">Glimpse of data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>soccer <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/spi_matches_latest.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

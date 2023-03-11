@@ -16,93 +16,93 @@
   {
     "objectID": "proposal.html",
     "href": "proposal.html",
-    "title": "Project title",
+    "title": "Stat Wizards Project",
     "section": "",
-    "text": "library(tidyverse)\n\nWarning: package 'ggplot2' was built under R version 4.2.2\n\n\nWarning: package 'tidyr' was built under R version 4.2.2\n\n\nWarning: package 'readr' was built under R version 4.2.2\n\n\nWarning: package 'purrr' was built under R version 4.2.2"
+    "text": "library(tidyverse)"
   },
   {
     "objectID": "proposal.html#introduction-and-data",
     "href": "proposal.html#introduction-and-data",
-    "title": "Project title",
+    "title": "Stat Wizards Project",
     "section": "Introduction and data",
-    "text": "Introduction and data\n\nIdentify the source of the data.\nState when and how it was originally collected (by the original data curator, not necessarily how you found the data).\nWrite a brief description of the observations."
+    "text": "Introduction and data\n\nIdentify the source of the data.\n\nThe source of the data is ai-jobs.net. It is a website for posting tech jobs and alayzing trends in job data.\n\nState when and how it was originally collected (by the original data curator, not necessarily how you found the data).\n\nThe site collects salary information anonymously from professionals all over the world in the AI/ML/Data Science space and makes it publicly available. The vast majority of the data was collected in 2023, 2022, and 2021.\n\nWrite a brief description of the observations.\n\nEach observation records the person’s job info, including salary info. This includes work year, employment type, job title, salary, employee residence, company location, etc.."
   },
   {
     "objectID": "proposal.html#research-question",
     "href": "proposal.html#research-question",
-    "title": "Project title",
+    "title": "Stat Wizards Project",
     "section": "Research question",
     "text": "Research question\n\nA well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)\nA description of the research topic along with a concise statement of your hypotheses on this topic.\nIdentify the types of variables in your research question. Categorical? Quantitative?"
   },
   {
     "objectID": "proposal.html#literature",
     "href": "proposal.html#literature",
-    "title": "Project title",
+    "title": "Stat Wizards Project",
     "section": "Literature",
     "text": "Literature\n\nFind one published credible article on the topic you are interested in researching.\nProvide a one paragraph summary about the article.\nIn 1-2 sentences, explain how your research question builds on / is different than the article you have cited."
   },
   {
     "objectID": "proposal.html#glimpse-of-data",
     "href": "proposal.html#glimpse-of-data",
-    "title": "Project title",
+    "title": "Stat Wizards Project",
     "section": "Glimpse of data",
-    "text": "Glimpse of data\n\n# add code here"
+    "text": "Glimpse of data\n\nsalaries <- read_csv(\"data/salaries.csv\")\n\n# add code here"
   },
   {
     "objectID": "proposal.html#introduction-and-data-1",
     "href": "proposal.html#introduction-and-data-1",
-    "title": "Project title",
+    "title": "Stat Wizards Project",
     "section": "Introduction and data",
-    "text": "Introduction and data\n\nIdentify the source of the data.\nState when and how it was originally collected (by the original data curator, not necessarily how you found the data).\nWrite a brief description of the observations."
+    "text": "Introduction and data\n\nIdentify the source of the data.\n\nThis data set is from the World Bank Databank. \n\nState when and how it was originally collected (by the original data curator, not necessarily how you found the data).\n\nThe data was originally collected from different national censuses; however, it was compiled by the World Bank.\n\nWrite a brief description of the observations.\n\nThis data set is split into five date intervals: the 1960, 1970, 1980, 1990, and 2000. In addition, this data set can be filtered by country as well as gender. However, we chose to look at all countries which data is provided for as well as both male and female immigrants."
   },
   {
     "objectID": "proposal.html#research-question-1",
     "href": "proposal.html#research-question-1",
-    "title": "Project title",
+    "title": "Stat Wizards Project",
     "section": "Research question",
-    "text": "Research question\n\nA well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)\nA description of the research topic along with a concise statement of your hypotheses on this topic.\nIdentify the types of variables in your research question. Categorical? Quantitative?"
+    "text": "Research question\n\nA well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)\n\nHow has the demographic and amount of the nation’s immigration population changed over these five decades?\n\nA description of the research topic along with a concise statement of your hypotheses on this topic.\n\nWith this research question, we intend to investigate the growth in the number of immigrants to the U.S. and where they are coming from. Are the countries where the largest population of people migrating to the U.S. the same? Different? Are there trends across regions or continents? We will look at when/if there are major shifts in the country of origin or spikes in the number of immigrants.\nWe expect that the number of people migrating to the U.S. overall increase across the countries, and the main countries they are coming from become increasingly non-European.\n\nIdentify the types of variables in your research question. Categorical? Quantitative?\n\nIn this data set, there are both categorical (country of origin, gender, country destination, etc) as well as quantitative variables (number of migrants to the US in that year)"
   },
   {
     "objectID": "proposal.html#literature-1",
     "href": "proposal.html#literature-1",
-    "title": "Project title",
+    "title": "Stat Wizards Project",
     "section": "Literature",
-    "text": "Literature\n\nFind one published credible article on the topic you are interested in researching.\nProvide a one paragraph summary about the article.\nIn 1-2 sentences, explain how your research question builds on / is different than the article you have cited."
+    "text": "Literature\n\nFind one published credible article on the topic you are interested in researching.\n\n○      https://www.pewresearch.org/hispanic/2015/09/28/chapter-5-u-s-foreign-born-population-trends/\n\nProvide a one paragraph summary about the article.\n\nThis article summarizes data collected by the pew research center on foreign-born U.S. population trends. From 1960-2000 there was an upward trend in the percentage of the foreign-born U.S. population (9.7 million to 31.1 million people respectively). Since 1970 there has been rapid growth, with 4.7% of the U.S. population being foreign-born in 1970 and, as of 2013, that number is up to 13.1%. In addition to this general increase, the demographic of the people migrating to the U.S. is different (what the data set we are looking at breaks down). A significant factor in this shift is the passage of the Immigration and Nationality act of 1965, which eliminated national or origin quotas and allowed immigrants from non-European countries to begin immigrating. For example, the top country in 1960 and 1970 which sent immigrants was Italy, and from 1980-2013 it is now Mexico. This research article then further investigates the state members of the foreign-born population live in, the language they speak, their age, and the amount of time they have spent living in the U.S.\n\nIn 1-2 sentences, explain how your research question builds on / is different than the article you have cited.\n\nWhile our research will build on this idea of examining, this article focuses on other internal domestic variables while we will focus mainly on the trends of people migrating. We intend to investigate further the trends this article touches on regarding the increased growth in immigration overall and the resulting change in demographics of that increased immigration population."
   },
   {
     "objectID": "proposal.html#glimpse-of-data-1",
     "href": "proposal.html#glimpse-of-data-1",
-    "title": "Project title",
+    "title": "Stat Wizards Project",
     "section": "Glimpse of data",
-    "text": "Glimpse of data\n\n# add code here"
+    "text": "Glimpse of data\n\nmirgration <- read.csv(\"data/migrationdata.csv\")"
   },
   {
     "objectID": "proposal.html#introduction-and-data-2",
     "href": "proposal.html#introduction-and-data-2",
-    "title": "Project title",
+    "title": "Stat Wizards Project",
     "section": "Introduction and data",
-    "text": "Introduction and data\n\nIdentify the source of the data.\nState when and how it was originally collected (by the original data curator, not necessarily how you found the data).\nWrite a brief description of the observations."
+    "text": "Introduction and data\n\nIdentify the source of the data.\n\nThis data is from FiveThirtyEight, a data science platform created by Nate Silver\n\nState when and how it was originally collected (by the original data curator, not necessarily how you found the data).\n\nThe data is updated daily based on soccer club match schedules. Because this is a collection of the latest matches, it dates back to 2019.\n\nWrite a brief description of the observations.\n\nEach observation in the dataset is one game. The dataset contains the details about each match (date, teams playing, etc), along with FiveThirtyEight’s predictions for goals scored, percentage chance each team wins, and the actual score if the game has been completed already."
   },
   {
     "objectID": "proposal.html#research-question-2",
     "href": "proposal.html#research-question-2",
-    "title": "Project title",
+    "title": "Stat Wizards Project",
     "section": "Research question",
-    "text": "Research question\n\nA well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)\nA description of the research topic along with a concise statement of your hypotheses on this topic.\nIdentify the types of variables in your research question. Categorical? Quantitative?"
+    "text": "Research question\n\nA well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)\n\nHow accurate is FiveThirtyEight’s model in regards to their expected goals stat? What is the average margin that they are off by?\nDifferent direction with same dataset: What are the most successful soccer clubs of the last 3 years by win percentage?\n\nA description of the research topic along with a concise statement of your hypotheses on this topic.\n\nWe are investigating the efficacy of soccer predictions, as FiveThirtyEight is largely regarded as the most comprehensive predictive model for sports games. We want to understand how reliable the predictions FiveThirtyEight makes are. Sports are difficult to make predictions for, so wed predict that there is a fair deal of error in these predictions.\n\nIdentify the types of variables in your research question. Categorical? Quantitative?\n\nLargely Quantitative"
   },
   {
     "objectID": "proposal.html#literature-2",
     "href": "proposal.html#literature-2",
-    "title": "Project title",
+    "title": "Stat Wizards Project",
     "section": "Literature",
-    "text": "Literature\n\nFind one published credible article on the topic you are interested in researching.\nProvide a one paragraph summary about the article.\nIn 1-2 sentences, explain how your research question builds on / is different than the article you have cited."
+    "text": "Literature\n\nFind one published credible article on the topic you are interested in researching.\n\nhttps://fivethirtyeight.com/methodology/how-our-club-soccer-predictions-work/\n\nProvide a one paragraph summary about the article.\n\nThis article discusses how FiveThirtyEight predicts matches and derives their expected goals and power index ratings. Based on previous match success, FiveThirtyEight updates what they call a SPI, or Soccer Power Index for each team that encompasses the relative strength of each team. Because goals do not always accurately reflect the performance of teams in an individual game, FiveThirtyEight bases their SPI on a stat called adjusted goals, which adjusts for overall team performance. With SPI, FiveThirtyEight predicts the percentage chance a match ends in a win for either team or in a draw. They also predict expected goals for each match. This part is not relevant to our research, but they also forecast the odds of teams winning the league they compete in based on their record and SPI strength.\n\nIn 1-2 sentences, explain how your research question builds on / is different than the article you have cited.\nThe article describes how their model is derived. With our research we intend to analyze how good their model is, something that the article does not discuss."
   },
   {
     "objectID": "proposal.html#glimpse-of-data-2",
     "href": "proposal.html#glimpse-of-data-2",
-    "title": "Project title",
+    "title": "Stat Wizards Project",
     "section": "Glimpse of data",
-    "text": "Glimpse of data\n\n# add code here"
+    "text": "Glimpse of data\n\nsoccer <- read.csv(\"data/spi_matches_latest.csv\")"
   },
   {
     "objectID": "report.html",
