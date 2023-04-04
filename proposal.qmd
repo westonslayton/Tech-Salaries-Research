@@ -1,9 +1,11 @@
 ---
-title: "Project title"
+title: "Stat Wizards Project Proposal"
 subtitle: "Proposal"
+author: "Stat Wizards: Amelia, Sophia, Weston, and Elliot"
+date: "3/10/23"
+
 format: html
 editor: visual
----≥
 ---
 
 ```{r}
@@ -27,23 +29,41 @@ The site collects salary information anonymously from professionals all over the
 
 -   Write a brief description of the observations.
 
-Each observation records the person's job info, including salary info. This includes work year, employment type, job title, salary, employee residence, company location, etc..
+Each observation records the person's job info. This includes work year, employment type, job title, salary, employee residence, company location, etc..
 
 ## Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
+How does your job within the field of tech (data scientist, machine learning engineer, data analyst), along with whether or not you work in the US, affect your salary?
+
+Another possible question:
+
+What is the probability that someone is a data scientists or a machine learning engineer based on their salary and whether or not they work the US?
+
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
+This research topic aims to understand various tech jobs and how they pay on average. It also intends to identify whether or not working for a US based company would affect your salary. My hypotheses is that US-based workers will have higher mean salaries, and that Data science/analyst jobs will have lower salaries on average than machine learning jobs.
+
 -   Identify the types of variables in your research question. Categorical? Quantitative?
+
+We would most likely use the salary_in_usd variable as our response variable, which is quantitative, along with categorical explanatory variables including job_title and employee_residence.
 
 ## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
+    https://www.projectpro.io/article/machine-learning-engineer-vs-data-scientist/534
+
 -   Provide a one paragraph summary about the article.
 
+    "According to [Payscale](https://www.payscale.com/research/US/Job=Data_Scientist/Salary/3eb9c016/Early-Career "Payscale"), the salary of Data Scientists lie between the range of \$85K and \$134K. On the other hand,\[machine learning engineers earn somewhere between \$93K and \$149K \](https://www.payscale.com/research/US/Job=Machine_Learning_Engineer/Salary" machine learning engineers earn somewhere between \$93K and \$149K "). These figures are purely survey-based and may vary from place to place, company to company."
+
+    The article says that machine learning engineers tend to have higher average salaries, because they tend to be software engineers that also have data science knowledge. However, it also says that it varies greatly place to place.
+
 -   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+
+    My research question builds on the article provided by also including whether the worker lives in the US or not.
 
 ## Glimpse of data
 
@@ -53,7 +73,9 @@ Each observation records the person's job info, including salary info. This incl
 
 salaries <- read_csv("data/salaries.csv")
 
-# add code here
+glimpse(salaries)
+
+
 ```
 
 # Data 2
@@ -92,7 +114,7 @@ salaries <- read_csv("data/salaries.csv")
 
 -   Find one published credible article on the topic you are interested in researching.
 
-    -   ○      <https://www.pewresearch.org/hispanic/2015/09/28/chapter-5-u-s-foreign-born-population-trends/>
+    -   <https://www.pewresearch.org/hispanic/2015/09/28/chapter-5-u-s-foreign-born-population-trends/>
 
 -   Provide a one paragraph summary about the article.
 
@@ -107,7 +129,9 @@ salaries <- read_csv("data/salaries.csv")
 ```{r}
 #| label: load-data-2
 
-mirgration <- read.csv("data/migrationdata.csv")
+migration <- read.csv("data/migrationdata.csv")
+
+glimpse(migration)
 ```
 
 # Data 3
@@ -116,30 +140,52 @@ mirgration <- read.csv("data/migrationdata.csv")
 
 -   Identify the source of the data.
 
+This data is from FiveThirtyEight, a data science platform created by Nate Silver
+
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
 
+The data is updated daily based on soccer club match schedules. Because this is a collection of the latest matches, it dates back to 2019.
+
 -   Write a brief description of the observations.
+
+Each observation in the dataset is one game. The dataset contains the details about each match (date, teams playing, etc), along with FiveThirtyEight's predictions for goals scored, percentage chance each team wins, and the actual score if the game has been completed already.
 
 ## Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
+How accurate is FiveThirtyEight's model in regards to their expected goals stat? What is the average margin that they are off by?
+
+Different direction with same dataset: What are the most successful soccer clubs of the last 3 years by win percentage?
+
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
+We are investigating the efficacy of soccer predictions, as FiveThirtyEight is largely regarded as the most comprehensive predictive model for sports games. We want to understand how reliable the predictions FiveThirtyEight makes are. Sports are difficult to make predictions for, so wed predict that there is a fair deal of error in these predictions.
+
 -   Identify the types of variables in your research question. Categorical? Quantitative?
+
+Largely Quantitative
 
 ## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
+https://fivethirtyeight.com/methodology/how-our-club-soccer-predictions-work/
+
 -   Provide a one paragraph summary about the article.
 
+This article discusses how FiveThirtyEight predicts matches and derives their expected goals and power index ratings. Based on previous match success, FiveThirtyEight updates what they call a SPI, or Soccer Power Index for each team that encompasses the relative strength of each team. Because goals do not always accurately reflect the performance of teams in an individual game, FiveThirtyEight bases their SPI on a stat called adjusted goals, which adjusts for overall team performance. With SPI, FiveThirtyEight predicts the percentage chance a match ends in a win for either team or in a draw. They also predict expected goals for each match. This part is not relevant to our research, but they also forecast the odds of teams winning the league they compete in based on their record and SPI strength.
+
 -   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+
+    The article describes how their model is derived. With our research we intend to analyze how good their model is, something that the article does not discuss.
 
 ## Glimpse of data
 
 ```{r}
 #| label: load-data-3
 
+soccer <- read.csv("data/spi_matches_latest.csv")
 
+glimpse(soccer)
 ```
