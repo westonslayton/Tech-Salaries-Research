@@ -9,9 +9,9 @@ execute:
 
 Introduction and Data
 
-This research topic aims to understand various tech jobs and how they pay on average. Our research question is: How does your job within the field of tech (data scientist vs. machine learning engineer), along with whether or not you work in the US, affect your salary? Also, how has this relationship changed over time?
+This research topic aims to understand various tech jobs and how they pay on average. Our research question is: How have the salaries of different jobs within the field of tech changed over time? Also, are these results different for companies in the US vs. outside the US?
 
-Our hypothesis is that Data scientist/analyst jobs will have lower salaries on average than machine learning jobs, and that that US-based workers will have higher mean salaries. Also, we predict this gap will get larger over time.
+Our hypothesis is that machine learning/AI salaries will have increased in recent years more so than Data scientist/analyst jobs, and that that US-based workers will have higher mean salaries.
 
 The source of the data is ai-jobs.net. It is a website for posting tech jobs and alayzing trends in job data. The site collects salary information anonymously from professionals all over the world in the AI/ML/Data Science space and makes it publicly available. The vast majority of the data was collected in 2023, 2022, and 2021. Each observation records the person's job info. This includes work year, employment type, job title, salary, employee residence, company location, etc.. We would most likely use the salary_in_usd variable as our response variable, which is quantitative, along with categorical explanatory variables including job_title and employee_residence.
 
