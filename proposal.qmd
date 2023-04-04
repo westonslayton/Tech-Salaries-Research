@@ -76,17 +76,17 @@ salaries <- read_csv("data/salaries.csv")
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
-    -    How has the demographic and amount of the nation\'s immigration population changed over these five decades?
+    -   How has the demographic and amount of the nation's immigration population changed over these five decades?
 
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
-    -    With this research question, we intend to investigate the growth in the number of immigrants to the U.S. and where they are coming from. Are the countries where the largest population of people migrating to the U.S. the same? Different? Are there trends across regions or continents? We will look at when/if there are major shifts in the country of origin or spikes in the number of immigrants.
+    -   With this research question, we intend to investigate the growth in the number of immigrants to the U.S. and where they are coming from. Are the countries where the largest population of people migrating to the U.S. the same? Different? Are there trends across regions or continents? We will look at when/if there are major shifts in the country of origin or spikes in the number of immigrants.
 
     -   We expect that the number of people migrating to the U.S. overall increase across the countries, and the main countries they are coming from become increasingly non-European.
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-    -    In this data set, there are both categorical (country of origin, gender, country destination, etc) as well as quantitative variables (number of migrants to the US in that year)
+    -   In this data set, there are both categorical (country of origin, gender, country destination, etc) as well as quantitative variables (number of migrants to the US in that year)
 
 ## Literature
 
