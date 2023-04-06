@@ -44,7 +44,7 @@ salary_jobs <- salaries |>
   filter(job_title %in% c("Data Scientist", "Data Analyst", "Machine Learning Engineer"))
 
 salary_jobs <- salary_jobs |>
-  mutate(work_year = work_year - 2019) |>
+  mutate(work_year = work_year - 2020) |>
   mutate("US_based" = if_else(company_location == "US", "US", "Not US"))
   
 
@@ -52,6 +52,21 @@ linear_reg() |>
   set_engine("lm") |>
   fit(salary_in_usd ~ work_year * job_title, data = salary_jobs) |>
   tidy()
+```
+
+```{r}
+
+salary_jobs |>
+     ggplot(aes(x = work_year, y = salary_in_usd, color = job_title)) +
+     geom_point(alpha = 0.05) +
+     labs(
+      title = "Average Salary per year by Job Title",
+       x = "Year",
+       y = "Salary (USD)",
+       color = "job_title"
+    ) +
+    geom_smooth(method = "lm", se = FALSE, linetype = "dashed") + 
+    scale_color_discrete(labels = c("Data Analyst", "Data Scientist", "Machine Learning Engineer"))
 ```
 
 ```{r}
