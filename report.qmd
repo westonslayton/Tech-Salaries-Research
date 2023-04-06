@@ -53,4 +53,15 @@ linear_reg() |>
   tidy()
 ```
 
+```{r}
+boot_df <- salary_jobs |>
+  specify(response = salary) |>
+  generate(reps = 5000, type = "bootstrap") |>
+  calculate(stat = "mean")
+
+boot_df |>
+  summarize(lower = quantile(stat, 0.005),
+            upper = quantile(stat, 0.995))
+```
+
 Result
