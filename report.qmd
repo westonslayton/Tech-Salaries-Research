@@ -112,7 +112,7 @@ salary_jobs2 <- salaries |>
 salary_jobs2 <- salary_jobs2 |>
   mutate(job_type = if_else(str_detect(job_title, "Engineer"), "Engineer", "Analyst"))
 
-salary_jobs2$job_type<-as.factor(salary_jobs2$job_title)
+salary_jobs2$job_type<-as.factor(salary_jobs2$job_type)
 
 logistic_reg() |>
   set_engine("glm") |>
