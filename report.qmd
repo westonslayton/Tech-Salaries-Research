@@ -20,4 +20,37 @@ One possible ethical issue regarding how our data was collected is that people s
 \
 Methodology
 
+```{r}
+#| label: load-pkgs
+#| message: false
+
+library(tidyverse)
+library(tidymodels)
+```
+
+```{r}
+#| label: load-data-1
+#| message: false
+
+salaries <- read_csv("data/salaries.csv")
+
+glimpse(salaries)
+```
+
+```{r}
+#| label: lin-reg
+
+salary_jobs <- salaries |>
+  filter(job_title %in% c("Data Scientist", "Data Analyst", "Machine Learning Engineer"))
+
+salary_jobs <- salary_jobs |>
+  mutate(work_year = work_year - 2019)
+  
+
+linear_reg() |>
+  set_engine("lm") |>
+  fit(salary ~ work_year * job_title, data = salary_jobs) |>
+  tidy()
+```
+
 Result
