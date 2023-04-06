@@ -120,4 +120,20 @@ salary_jobs |>
   summarize(mean(salary_in_usd))
 ```
 
+```{r}
+#| label: medians
+
+salary_jobs |>
+  filter(job_title == "Data Analyst") |>
+  summarize(median(salary_in_usd))
+
+salary_jobs |>
+  filter(job_title == "Data Scientist") |>
+  summarize(median(salary_in_usd))
+
+salary_jobs |>
+  filter(job_title == "Machine Learning Engineer") |>
+  summarize(median(salary_in_usd))
+```
+
 Result
