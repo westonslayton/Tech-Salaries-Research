@@ -44,12 +44,13 @@ salary_jobs <- salaries |>
   filter(job_title %in% c("Data Scientist", "Data Analyst", "Machine Learning Engineer"))
 
 salary_jobs <- salary_jobs |>
-  mutate(work_year = work_year - 2019)
+  mutate(work_year = work_year - 2019) |>
+  mutate("US_based" = if_else(company_location == "US", "US", "Not US"))
   
 
 linear_reg() |>
   set_engine("lm") |>
-  fit(salary ~ work_year * job_title, data = salary_jobs) |>
+  fit(salary_in_usd ~ work_year * job_title, data = salary_jobs) |>
   tidy()
 ```
 
@@ -62,6 +63,16 @@ boot_df <- salary_jobs |>
 boot_df |>
   summarize(lower = quantile(stat, 0.005),
             upper = quantile(stat, 0.995))
+```
+
+```{r}
+#| label: plot-salaries-by-year
+
+salary_jobs |>
+  ggplot(aes(x = work_year, y = salary_in_usd, color = job_title, fill = US_based)) +
+  geom_point() +
+  facet_wrap("US_based")
+
 ```
 
 Result
