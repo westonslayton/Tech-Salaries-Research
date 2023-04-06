@@ -102,4 +102,22 @@ salary_jobs |>
 
 ```
 
+summary statistics
+
+```{r}
+#| label: means
+
+salary_jobs |>
+  filter(job_title == "Data Analyst") |>
+  summarize(mean(salary_in_usd))
+
+salary_jobs |>
+  filter(job_title == "Data Scientist") |>
+  summarize(mean(salary_in_usd))
+
+salary_jobs |>
+  filter(job_title == "Machine Learning Engineer") |>
+  summarize(mean(salary_in_usd))
+```
+
 Result
