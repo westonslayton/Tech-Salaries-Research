@@ -104,6 +104,7 @@ salary_jobs |>
 ```
 
 ```{r}
+#| label: log-reg
 
 salary_jobs2 <- salaries |>
   filter(str_detect(salaries$job_title, "Engineer|Analyst"))
@@ -115,7 +116,7 @@ salary_jobs2 <- salary_jobs2 |>
 logistic_reg() |>
   set_engine("glm") |>
   fit(job_type ~ salary_in_usd, data = salary_jobs2, family = "binomial") |>
-  tidy()
+  tidy() #this is trying to find the probability you're an analyst or an engineer based on your salary
 ```
 
 summary statistics
