@@ -52,6 +52,7 @@ glimpse(salaries)
 ```{r}
 #| label: lin-reg
 
+
 salary_jobs <- salaries |>
   filter(job_title %in% c("Data Scientist", "Data Analyst", "Machine Learning Engineer"))
 
@@ -100,6 +101,21 @@ salary_jobs |>
   geom_point() +
   facet_wrap("US_based")
 
+```
+
+```{r}
+
+salary_jobs2 <- salaries |>
+  filter(str_detect(salaries$job_title, "Engineer|Analyst"))
+
+salary_jobs2 <- salary_jobs2 |>
+  mutate(job_type = if_else(str_detect(job_title, "Engineer"), "Engineer", "Analyst"))
+
+
+logistic_reg() |>
+  set_engine("glm") |>
+  fit(job_type ~ salary_in_usd, data = salary_jobs2, family = "binomial") |>
+  tidy()
 ```
 
 summary statistics
