@@ -83,7 +83,7 @@ salary_jobs |>
 
 ```{r}
 boot_df <- salary_jobs |>
-  specify(response = salary) |>
+  specify(response = salary_in_usd) |>
   generate(reps = 5000, type = "bootstrap") |>
   calculate(stat = "mean")
 
