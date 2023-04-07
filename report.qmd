@@ -114,11 +114,20 @@ salary_jobs2 <- salary_jobs2 |>
 
 salary_jobs2$job_type<-as.factor(salary_jobs2$job_type)
 
-logistic_reg() |>
+model <- logistic_reg() |>
   set_engine("glm") |>
-  fit(job_type ~ salary_in_usd, data = salary_jobs2, family = "binomial") |>
-  tidy() #this is trying to find the probability you're an analyst or an engineer based on your salary
+  fit(job_type ~ salary_in_usd, data = salary_jobs2, family = "binomial") #this is trying to find the probability you're an analyst or an engineer based on your salary
 
+salary_jobs2 <- salary_jobs2 |>
+  mutate(pred_prob = predict(model$fit, type = "response"))
+
+ggplot(data = salary_jobs2) + 
+  geom_point(aes(x = salary_in_usd, y = as.numeric(job_type) -1, color = job_type)) + 
+  geom_line(aes(x = salary_in_usd, y = pred_prob)) + 
+  labs(x = "Salary (USD)", 
+       y = "Predicted Probability You're an Engineer", 
+       color = "Job Type"
+       )
 ```
 
 summary statistics
