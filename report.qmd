@@ -11,7 +11,7 @@ Introduction and Data
 
 This research topic aims to understand various tech jobs and how they pay on average. Our research question is: How have the salaries of different jobs within the field of tech changed over time? Also, are these results different for companies in the US vs. outside the US?
 
-Our hypothesis is that machine learning/AI salaries will have increased in recent years more so than Data scientist/analyst jobs, and that that US-based workers will have higher mean salaries.
+Our hypothesis is that machine learning/AI salaries will have increased in recent years more so than Data scientist/analyst jobs, and that US-based workers will have higher mean salaries.
 
 The source of the data is ai-jobs.net. It is a website for posting tech jobs and alayzing trends in job data. The site collects salary information anonymously from professionals all over the world in the AI/ML/Data Science space and makes it publicly available. The vast majority of the data was collected in 2023, 2022, and 2021. Each observation records the person's job info. This includes work year, employment type, job title, salary, employee residence, company location, etc.. We would most likely use the salary_in_usd variable as our response variable, which is quantitative, along with categorical explanatory variables including job_title and employee_residence.
 
@@ -156,3 +156,5 @@ salary_jobs |>
 ```
 
 Result
+
+In order to arrive at an accurate and appropriate conclusion for our hypothesis: that machine learning/AI salaries will have increased in recent years more so than Data scientist/analyst jobs and that US-based workers will have higher mean salaries, we chose to visualize our data set in multiple ways. Two clear observations were confirmed in our plots. First, the mean salaries in 2020 were ordered from lowest to highest: Data Analyst, Data Scientist, and Machine Learning Engineer. This can be seen from our tidy(), as our intercept value is 76466.8 (the mean Data Analyst salary in 2020), the Data Scientist intercept is (76466.8 + 148.9), and the Machine Learning intercept is (76466.8 + 21460.2). These intercept values represented the mean salaries in 2020. This also confirms our hypothesis that Machine learning salaries are higher than data scientist/analyst jobs. The second observation is that rates at which job salaries have increased since 2020 are ordered from lowest to highest such as Data Analyst, Machine Learning Engineer, and Data Scientist. This can also be seen from our tidy(), as the baseline slope (slope for data analysts) is 12817.4 usd/year. Then, the Machine Learning Engineer slope is (12817.4 + 8996.96), and the Data Scientist slope is (12817.4 + 14633.8). Lastly, the mean summary statistic also is consistent with our hypothesis that the mean salary is highest for Machine learning (\$149512.7) compared to Data scientists (\$136405.7) and Data Analysts (\$106134.4) mean salaries.
