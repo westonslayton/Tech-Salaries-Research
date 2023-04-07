@@ -130,6 +130,8 @@ ggplot(data = salary_jobs2) +
        )
 ```
 
+This plot shows that as salary increases, the probability that you're an engineer instead of an analyst increases.
+
 summary statistics
 
 ```{r}
