@@ -128,14 +128,32 @@ summary statistics
 
 salary_jobs |>
   filter(job_title == "Data Analyst") |>
+  filter(US_based == "US") |>
+  summarize(mean(salary_in_usd))
+
+salary_jobs |>
+  filter(job_title == "Data Analyst") |>
+  filter(US_based != "US") |>
   summarize(mean(salary_in_usd))
 
 salary_jobs |>
   filter(job_title == "Data Scientist") |>
+  filter(US_based == "US") |>
+  summarize(mean(salary_in_usd))
+
+salary_jobs |>
+  filter(job_title == "Data Scientist") |>
+  filter(US_based != "US") |>
   summarize(mean(salary_in_usd))
 
 salary_jobs |>
   filter(job_title == "Machine Learning Engineer") |>
+  filter(US_based == "US") |>
+  summarize(mean(salary_in_usd))
+
+salary_jobs |>
+  filter(job_title == "Machine Learning Engineer") |>
+  filter(US_based != "US") |>
   summarize(mean(salary_in_usd))
 ```
 
@@ -144,14 +162,32 @@ salary_jobs |>
 
 salary_jobs |>
   filter(job_title == "Data Analyst") |>
+  filter(US_based == "US") |>
+  summarize(median(salary_in_usd))
+
+salary_jobs |>
+  filter(job_title == "Data Analyst") |>
+  filter(US_based != "US") |>
   summarize(median(salary_in_usd))
 
 salary_jobs |>
   filter(job_title == "Data Scientist") |>
+  filter(US_based == "US") |>
+  summarize(median(salary_in_usd))
+
+salary_jobs |>
+  filter(job_title == "Data Scientist") |>
+  filter(US_based != "US") |>
   summarize(median(salary_in_usd))
 
 salary_jobs |>
   filter(job_title == "Machine Learning Engineer") |>
+  filter(US_based == "US") |>
+  summarize(median(salary_in_usd))
+
+salary_jobs |>
+  filter(job_title == "Machine Learning Engineer") |>
+  filter(US_based != "US") |>
   summarize(median(salary_in_usd))
 ```
 
