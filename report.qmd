@@ -97,8 +97,10 @@ boot_df |>
 #| label: plot-salaries-by-year
 
 salary_jobs |>
-  ggplot(aes(x = work_year, y = salary_in_usd, color = job_title, fill = US_based)) +
-  geom_point() +
+  ggplot(aes(x = work_year, y = salary_in_usd, color = job_title)) +
+  geom_point(position = "jitter") +
+  labs(title = "Plot of salaries by year, US and Non US",
+       x = "Year", y = "Salary (USD)", color = "Job") +
   facet_wrap("US_based")
 
 ```
