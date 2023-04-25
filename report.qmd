@@ -7,7 +7,7 @@ execute:
   echo: true
 ---
 
-**Introduction and Data**
+## **Introduction and Data**
 
 Over the years, technology has continued to advance and become more present in one\'s daily life. Specifically, the presence of artificial intelligence and machine learning has drastically grown. As we have seen applications such as ChatGPT, algorithms automatically detecting objects, or live captions on videos, our group was intrigued by this technology\'s growing influence on society. It would thus be likely that employees in this sector of technology roles would be benefitting salary wise as they are in high demand. We thus wanted to investigate how these jobs\' salaries are changing in comparison to other well known tech jobs, like data analysts/scientists. As an added bonus, this allows us to explore what this class has been teaching us about all semester - data scientists!
 
