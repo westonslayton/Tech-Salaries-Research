@@ -126,6 +126,9 @@ pt(tscore, df = 295, lower.tail = FALSE)
 
 Our p-value is approximately 0 (6.877573e-09; < 0.001). This means that is is extremely unlikely (nearly a probability of 0) of observing our sample mean salary difference of \$23882 (or a larger age difference), if our null hypothesis that the true mean salary of the two job types are equal is true. This is statistically significant, as we are able to reject our null hyopthesis using a significane level of 0.05 (or 0.01). There is strong evidence to conclude the alternative hypothesis that the true mean salary of ML/AI jobs ($\mu_{ai}$) is greater than the true mean salary of Data Science/Analyst jobs ($\mu_{data}$).
 
+This conclusion aligns with our hypothesis ** - expand on this in results
+
+We can also use logistic regression to show 
 
 
 
