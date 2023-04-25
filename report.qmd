@@ -19,19 +19,27 @@ One possible ethical issue regarding how our data was collected is that people s
 
 ## Literature
 
--   Find one published credible article on the topic you are interested in researching.
+The article, \"Machine Learning Engineer vs. Data Scientist - The Differences,\" last updated April 24, 2023, aims to provide an overview comparison between two popular data scientist positions: Machine Learning Engineers vs. Data Scientists. First, it defines a Machine Learning Engineer as someone who makes a system for customers or organizations to make predictions.[^1] In contrast, this article illustrates the role of a Data Scientist as someone who decides what data to feed these systems or machine learning models.[^2]
 
-    https://www.projectpro.io/article/machine-learning-engineer-vs-data-scientist/534
+[^1]:  https://www.projectpro.io/article/machine-learning-engineer-vs-data-scientist/534
 
--   Provide a one paragraph summary about the article.
+[^2]: ibid.
 
-    "According to [Payscale](https://www.payscale.com/research/US/Job=Data_Scientist/Salary/3eb9c016/Early-Career "Payscale"), the salary of Data Scientists lie between the range of \$85K and \$134K. On the other hand,\[machine learning engineers earn somewhere between \$93K and \$149K \](https://www.payscale.com/research/US/Job=Machine_Learning_Engineer/Salary" machine learning engineers earn somewhere between \$93K and \$149K "). These figures are purely survey-based and may vary from place to place, company to company."
+Using data collected by Indeed Jobs, this article analyzes the popularity trends of these two positions worldwide and finds that while more people around the world hold the position of a Data Scientist, the need for Machine Learning Engineers is growing faster. This article not only compares the demand for these positions but their salaries as well.[^3] According to payscale, the current salary of a Data Scientist is between \$85K and \$134K compared to a Machine Learning Engineer who earns between \$93K and \$149K.[^4] These are large ranges that often vary from place to place. Therefore, our study will add to this research by looking at the mean salaries for these roles over time to help contextualize and view the trends behind these numbers. 
 
-    The article says that machine learning engineers tend to have higher average salaries, because they tend to be software engineers that also have data science knowledge. However, it also says that it varies greatly place to place.
+[^3]: ibid.
+
+[^4]:  https://www.payscale.com/research/US/Job=Machine_Learning_Engineer/Salary
+
+In addition, our study aims to push this comparison by looking at mean salaries over time and how the value of these roles (measured in mean salary) has changed over time. In addition, we will also push the comparison by breaking down the roles by those in and outside the U.S., not just examining all the jobs worldwide. We believe this is useful since it will show how one\'s salary might be different depending if they work in the U.S. or abroad. This article examines the popularity of the two positions worldwide by looking at the % of matching job postings.[^5] Still, our study will examine how this increase in demand or need for these positions has impacted the salaries domestically and abroad.
+
+[^5]:  https://www.projectpro.io/article/machine-learning-engineer-vs-data-scientist/534
+
+This research is important for anyone interested, like we are, in the ever-growing field of data science and the possible future roles we might hold. Therefore we aim to contextualize the salaries of these different positions within the data scientist field and how that might differ depending on where you work. After all, the demand and usage for Data Science are different in different places; therefore, it is useful that we examine these salaries in two ways: over time, and not just in a domestic vacuum, but internationally as well. 
 
 \
-
-
+\
+\
 
 ```{r}
 #| label: load-pkgs
@@ -50,7 +58,6 @@ salaries <- read_csv("data/salaries.csv")
 glimpse(salaries)
 ```
 
-
 **Methodology:**
 
 The first step in assessing our research question is determining the difference in salaries between our two groups of jobs. Accomplishing this requires a hypothesis test, as we want to test for independence between the true mean salaries of our groups. A confidence interval would only be helpful in determining a range of sample mean differences, while a hypothesis test can confirm our hypothesis that the true mean salaries for Machine Learning/AI jobs are higher than the true mean salaries for Data Scientist/Data Analyst jobs.
@@ -63,7 +70,8 @@ $H_a: \mu_{ai} - \mu_{data} > 0$
 
 Our alternative hypothesis is that the true mean salary of machine learning/AI jobs ($\mu_{ai}$) is greater than the true mean salary of data scientist/data analyst jobs ($\mu_{data}$).
 
-Our next step is creating our two catagories of jobs from our data set, so we can start generating statistics:  
+Our next step is creating our two catagories of jobs from our data set, so we can start generating statistics:
+
 ```{r}
 #| label: create-groups
 
@@ -85,7 +93,7 @@ salary_jobs |>
 
 $\bar{x}_{ai} - \bar{x}_{data} = 23882$
 
-The sample mean salary difference between ai jobs and data science jobs is 23,882$.
+The sample mean salary difference between ai jobs and data science jobs is 23,882\$.
 
 We can now use the central limit theorom to carry out our hypothesis test, as the observations are independent from one another, and there are at least 30 observations in each group. This can be seen below:
 
@@ -124,13 +132,11 @@ tscore <- (23882 - 0) / SE
 pt(tscore, df = 295, lower.tail = FALSE)
 ```
 
-Our p-value is approximately 0 (6.877573e-09; < 0.001). This means that is is extremely unlikely (nearly a probability of 0) of observing our sample mean salary difference of \$23882 (or a larger age difference), if our null hypothesis that the true mean salary of the two job types are equal is true. This is statistically significant, as we are able to reject our null hyopthesis using a significane level of 0.05 (or 0.01). There is strong evidence to conclude the alternative hypothesis that the true mean salary of ML/AI jobs ($\mu_{ai}$) is greater than the true mean salary of Data Science/Analyst jobs ($\mu_{data}$).
+Our p-value is approximately 0 (6.877573e-09; \< 0.001). This means that is is extremely unlikely (nearly a probability of 0) of observing our sample mean salary difference of \$23882 (or a larger age difference), if our null hypothesis that the true mean salary of the two job types are equal is true. This is statistically significant, as we are able to reject our null hyopthesis using a significane level of 0.05 (or 0.01). There is strong evidence to conclude the alternative hypothesis that the true mean salary of ML/AI jobs ($\mu_{ai}$) is greater than the true mean salary of Data Science/Analyst jobs ($\mu_{data}$).
 
-This conclusion aligns with our hypothesis ** - expand on this in results
+This conclusion aligns with our hypothesis \*\* - expand on this in results
 
-We can also use logistic regression to show 
-
-
+We can also use logistic regression to show
 
 ```{r}
 #| label: lin-reg
