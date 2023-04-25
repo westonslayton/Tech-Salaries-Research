@@ -3,7 +3,6 @@ title: "Stat Wizards Project"
 subtitle: "Report on jobs in Data/AI"
 format: html
 editor: visual
-execute:
 echo: false
 ---
 
