@@ -7,19 +7,25 @@ execute:
   echo: true
 ---
 
-Introduction and Data
+**Introduction and Data**
 
-This research topic aims to understand various tech jobs and how they pay on average. Our research question is: How have the salaries of different jobs within the field of tech changed over time? Also, are these results different for companies in the US vs. outside the US?
+Over the years, technology has continued to advance and become more present in one\'s daily life. Specifically, the presence of artificial intelligence and machine learning has drastically grown. As we have seen applications such as ChatGPT, algorithms automatically detecting objects, or live captions on videos, our group was intrigued by this technology\'s growing influence on society. It would thus be likely that employees in this sector of technology roles would be benefitting salary wise as they are in high demand. We thus wanted to investigate how these jobs\' salaries are changing in comparison to other well known tech jobs, like data analysts/scientists. As an added bonus, this allows us to explore what this class has been teaching us about all semester - data scientists!
 
-Our hypothesis is that machine learning/AI salaries will have increased in recent years more so than Data scientist/analyst jobs, and that US-based workers will have higher mean salaries.
+Our research topic aims to understand various tech jobs and how they pay on average in the U.S. and globally. Our research question is: How do the salaries of machine learning/AI jobs and that of data scientists/analyst jobs compare to one another, and are they changing with time? Also, are these results different for companies in the US vs. outside the US?
 
-The source of the data is ai-jobs.net. It is a website for posting tech jobs and analyzing trends in job data. The site collects salary information anonymously from professionals all over the world in the AI/ML/Data Science space and makes it publicly available. The vast majority of the data was collected in 2023, 2022, and 2021. Each observation records the person's job info. This includes work year, employment type, job title, salary, employee residence, company location, etc.. We would most likely use the salary_in_usd variable as our response variable, which is quantitative, along with categorical explanatory variables including job_title and employee_residence.
+Our hypothesis is that machine learning/AI salaries not only will be higher overall, but will have increased more rapidly in recent years in comparison to data scientist/analyst jobs. We also predict that US-based workers will have higher mean salaries. We are making this educated guess due to the rising popularity of artificial intelligence/machine learning in our everyday lives, which generates higher demand leading to higher wages. We also believe that the United States has very well established tech companies that generate overall higher salaries. 
 
-One possible ethical issue regarding how our data was collected is that people submit their own salary information to this dataset. This could lead to people submitting incorrect information and lying about their salaries.
+The source of the data is ai-jobs.net. It is a website for posting tech jobs and analyzing trends in job data. The site collects salary information anonymously from professionals all over the world in the AI/ML/Data Science space and makes it publicly available. This particular data set is a collection of global AI, ML, and Data salaries. The vast majority of the data was collected in the years of 2021-2023, inclusive. Each observation records the person's job information. This includes work year, employment type, job title, salary, employee residence, company location, etc.. Overall, there are 3046 observations and 11 variables.
+
+We are most interested in the salary_in_usd variable as our response variable, which is quantitative, along with categorical explanatory variables including job_title, company_location, and work_year. We used the job_title variable to filter out all the alternate tech jobs outside of our focus. Subsequently, we needed to pair together the data for employees with machine learning and artificial intelligence jobs into one variable, and the same for those with data scientist and analyst jobs. We used the job_title variable to filter the data into the categories and stored them in two new variables: ML/AI and datascientist/analyst.
+
+One possible ethical issue regarding how our data was collected is that people anonymously submit their own salary information to this dataset. Without being overlooked it is highly possible that people accidentally, or purposefully, submit wrong numbers. This dataset is open to anyone\'s edits which poses another issue. Even if there were correct submissions initially, if someone is interested in the data and wants to play around with possible outcomes, they may change the numbers themselves.
+
+\
 
 ## Literature
 
-The article, \"Machine Learning Engineer vs. Data Scientist - The Differences,\" last updated April 24, 2023, aims to provide an overview comparison between two popular data scientist positions: Machine Learning Engineers vs. Data Scientists. First, it defines a Machine Learning Engineer as someone who makes a system for customers or organizations to make predictions.[^1] In contrast, this article illustrates the role of a Data Scientist as someone who decides what data to feed these systems or machine learning models.[^2]
+The article, "Machine Learning Engineer vs. Data Scientist - The Differences," last updated April 24, 2023, aims to provide an overview comparison between two popular data scientist positions: Machine Learning Engineers vs. Data Scientists. First, it defines a Machine Learning Engineer as someone who makes a system for customers or organizations to make predictions.[^1] In contrast, this article illustrates the role of a Data Scientist as someone who decides what data to feed these systems or machine learning models.[^2]
 
 [^1]:  https://www.projectpro.io/article/machine-learning-engineer-vs-data-scientist/534
 
@@ -31,7 +37,7 @@ Using data collected by Indeed Jobs, this article analyzes the popularity trends
 
 [^4]:  https://www.payscale.com/research/US/Job=Machine_Learning_Engineer/Salary
 
-In addition, our study aims to push this comparison by looking at mean salaries over time and how the value of these roles (measured in mean salary) has changed over time. In addition, we will also push the comparison by breaking down the roles by those in and outside the U.S., not just examining all the jobs worldwide. We believe this is useful since it will show how one\'s salary might be different depending if they work in the U.S. or abroad. This article examines the popularity of the two positions worldwide by looking at the % of matching job postings.[^5] Still, our study will examine how this increase in demand or need for these positions has impacted the salaries domestically and abroad.
+In addition, our study aims to push this comparison by looking at mean salaries over time and how the value of these roles (measured in mean salary) has changed over time. In addition, we will also push the comparison by breaking down the roles by those in and outside the U.S., not just examining all the jobs worldwide. We believe this is useful since it will show how one's salary might be different depending if they work in the U.S. or abroad. This article examines the popularity of the two positions worldwide by looking at the % of matching job postings.[^5] Still, our study will examine how this increase in demand or need for these positions has impacted the salaries domestically and abroad.
 
 [^5]:  https://www.projectpro.io/article/machine-learning-engineer-vs-data-scientist/534
 
@@ -138,7 +144,6 @@ This conclusion aligns with our hypothesis \*\* - expand on this in results
 
 We can also use logistic regression to show the probability that your job is one of the two catagories (AI/ML vs. Data Scientist/Analyst) based on your salary. We do this by fitting a model to predict job type (catagorical) based on salary (quantitative). We are using logistic reggression for this reason, as it is better at working with catagorical response variables and quantitative explanatory variables. Then, we add in our predicted probability values to our dataset, and finally plot it.
 
-
 ```{r}
 #| label: log-reg
 
@@ -159,13 +164,12 @@ ggplot(data = salary_jobs) +
        color = "Job Type"
        )
 ```
-We can see from the plot that as salary increases, there is a higher probability that you have a ML/AI, rather than a Data Scientist/Analyst. This furthe shows that AI/ML jobs tend to have higher mean salaries than data jobs, which alligns with our hypothesis. 
 
-**expand on this in results section  
+We can see from the plot that as salary increases, there is a higher probability that you have a ML/AI, rather than a Data Scientist/Analyst. This furthe shows that AI/ML jobs tend to have higher mean salaries than data jobs, which alligns with our hypothesis.
 
-We also want to look at how 
+\*\*expand on this in results section
 
-
+We also want to look at how
 
 ```{r}
 #| label: lin-reg
