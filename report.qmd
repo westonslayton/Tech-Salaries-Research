@@ -169,40 +169,49 @@ We can see from the plot that as salary increases, there is a higher probability
 
 \*\*expand on this in results section
 
-We also want to look at how
+We also want to look at how the salaries of these two job types have changed in recent years. We can do this by fitting a linear regression model with salary as our response variable and year and job type interacting as our explanatory variables. To do this we need to adjust our work_year variable. In the original dataset the year is stated as the actual year (2020, 2021, 2022, etc...), however we need the year to be lower values (0, 1, 2) so that it works visually in a linear regression model. So, we will subtract 2020 from each of the work_year observations, such that work_year is effectively years since 2020. 
 
 ```{r}
 #| label: lin-reg
 
 
-salary_jobs <- salaries |>
-  filter(job_title %in% c("Data Scientist", "Data Analyst", "Machine Learning Engineer", "ML Engineer", "AI Developer", "AI Scientist"))
-
 salary_jobs <- salary_jobs |>
-  mutate(work_year = work_year - 2020) |>
-  mutate("US_based" = if_else(company_location == "US", "US", "Not US"))
-  
+  mutate(work_year = work_year - 2020)
 
 linear_reg() |>
   set_engine("lm") |>
   fit(salary_in_usd ~ work_year * job_type, data = salary_jobs) |>
   tidy()
 ```
+From this tidy table we can come up with this equation for salary:
+
+$\widehat{salary\_in\_usd} = 80463.128 + 19258.594*year + 5986.455*ML/AI + 7083.503*year*ML/AI$
+
+{1 if ML/AI; 0 else}
+
+From this, the individual salary equations are as followed:
+
+Data Scientist/Analyst: $\widehat{salary\_in\_usd} = 80463.128 + 19258.594*year$
+ML/AI: $\widehat{salary\_in\_usd} = (80463.128 + 5986.455) + (19258.594 + 7083.503)*year$
+
+From this tidy, we can see that the mean salary of ML/AI jobs is $5986.455 higher than the mean salary for Data Scientist/Analyst jobs. Also, as each year goes by, the salary for Data Science jobs goes up by \$19, 258.594, while the salary for ML/AI jobs goes up by \$26342.1. We can plot this fitted model below:
+
 
 ```{r}
 
 salary_jobs |>
-     ggplot(aes(x = work_year, y = salary_in_usd, color = job_title)) +
+     ggplot(aes(x = work_year, y = salary_in_usd, color = job_type)) +
      geom_point(alpha = 0.05) +
      labs(
       title = "Average Salary per year by Job Title",
-       x = "Year",
+       x = "Years Since 2020",
        y = "Salary (USD)",
        color = "job_title"
     ) +
-    geom_smooth(method = "lm", se = FALSE, linetype = "dashed") + 
-    scale_color_discrete(labels = c("Data Analyst", "Data Scientist", "Machine Learning Engineer"))
+    geom_smooth(method = "lm", se = FALSE, linetype = "dashed")
 ```
+Although it's a small difference, we can see that ML/AI job salaries have a steeper slope, meaning they are increasing at a faster rate in recent years. This alligns with our hyophtesis. **expand on this in results section.
+
 
 ```{r}
 boot_df <- salary_jobs |>
@@ -222,6 +231,10 @@ salary_jobs |>
   ggplot(aes(x = work_year, y = salary_in_usd, color = job_title, fill = US_based)) +
   geom_point() +
   facet_wrap("US_based")
+
+
+
+  mutate("US_based" = if_else(company_location == "US", "US", "Not US"))
 
 ```
 
