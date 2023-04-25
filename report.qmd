@@ -136,7 +136,36 @@ Our p-value is approximately 0 (6.877573e-09; \< 0.001). This means that is is e
 
 This conclusion aligns with our hypothesis \*\* - expand on this in results
 
-We can also use logistic regression to show
+We can also use logistic regression to show the probability that your job is one of the two catagories (AI/ML vs. Data Scientist/Analyst) based on your salary. We do this by fitting a model to predict job type (catagorical) based on salary (quantitative). We are using logistic reggression for this reason, as it is better at working with catagorical response variables and quantitative explanatory variables. Then, we add in our predicted probability values to our dataset, and finally plot it.
+
+
+```{r}
+#| label: log-reg
+
+salary_jobs$job_type<-as.factor(salary_jobs$job_type)
+
+model <- logistic_reg() |>
+  set_engine("glm") |>
+  fit(job_type ~ salary_in_usd, data = salary_jobs, family = "binomial")
+
+salary_jobs <- salary_jobs |>
+  mutate(pred_prob = predict(model$fit, type = "response"))
+
+ggplot(data = salary_jobs) + 
+  geom_point(aes(x = salary_in_usd, y = as.numeric(job_type) -1, color = job_type)) + 
+  geom_line(aes(x = salary_in_usd, y = pred_prob)) + 
+  labs(x = "Salary (USD)", 
+       y = "Predicted Probability You Have a ML/AI job", 
+       color = "Job Type"
+       )
+```
+We can see from the plot that as salary increases, there is a higher probability that you have a ML/AI, rather than a Data Scientist/Analyst. This furthe shows that AI/ML jobs tend to have higher mean salaries than data jobs, which alligns with our hypothesis. 
+
+**expand on this in results section  
+
+We also want to look at how 
+
+
 
 ```{r}
 #| label: lin-reg
@@ -191,35 +220,6 @@ salary_jobs |>
   facet_wrap("US_based")
 
 ```
-
-```{r}
-#| label: log-reg
-
-salary_jobs2 <- salaries |>
-  filter(str_detect(salaries$job_title, "Engineer|Analyst"))
-
-salary_jobs2 <- salary_jobs2 |>
-  mutate(job_type = if_else(str_detect(job_title, "Engineer"), "Engineer", "Analyst"))
-
-salary_jobs2$job_type<-as.factor(salary_jobs2$job_type)
-
-model <- logistic_reg() |>
-  set_engine("glm") |>
-  fit(job_type ~ salary_in_usd, data = salary_jobs2, family = "binomial") #this is trying to find the probability you're an analyst or an engineer based on your salary
-
-salary_jobs2 <- salary_jobs2 |>
-  mutate(pred_prob = predict(model$fit, type = "response"))
-
-ggplot(data = salary_jobs2) + 
-  geom_point(aes(x = salary_in_usd, y = as.numeric(job_type) -1, color = job_type)) + 
-  geom_line(aes(x = salary_in_usd, y = pred_prob)) + 
-  labs(x = "Salary (USD)", 
-       y = "Predicted Probability You're an Engineer", 
-       color = "Job Type"
-       )
-```
-
-This plot shows that as salary increases, the probability that you're an engineer instead of an analyst increases.
 
 summary statistics
 
