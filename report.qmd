@@ -30,7 +30,8 @@ One possible ethical issue regarding how our data was collected is that people s
     The article says that machine learning engineers tend to have higher average salaries, because they tend to be software engineers that also have data science knowledge. However, it also says that it varies greatly place to place.
 
 \
-Methodology
+
+
 
 ```{r}
 #| label: load-pkgs
@@ -49,12 +50,91 @@ salaries <- read_csv("data/salaries.csv")
 glimpse(salaries)
 ```
 
+
+**Methodology:**
+
+The first step in assessing our research question is determining the difference in salaries between our two groups of jobs. Accomplishing this requires a hypothesis test, as we want to test for independence between the true mean salaries of our groups. A confidence interval would only be helpful in determining a range of sample mean differences, while a hypothesis test can confirm our hypothesis that the true mean salaries for Machine Learning/AI jobs are higher than the true mean salaries for Data Scientist/Data Analyst jobs.
+
+$H_o: \mu_{ai} - \mu_{data} = 0$
+
+Our null hypothesis is that the true mean salary of machine learning/AI jobs ($\mu_{ai}$) is equal to the true mean salary of data scientist/data analyst jobs ($\mu_{data}$).
+
+$H_a: \mu_{ai} - \mu_{data} > 0$
+
+Our alternative hypothesis is that the true mean salary of machine learning/AI jobs ($\mu_{ai}$) is greater than the true mean salary of data scientist/data analyst jobs ($\mu_{data}$).
+
+Our next step is creating our two catagories of jobs from our data set, so we can start generating statistics:  
+```{r}
+#| label: create-groups
+
+salary_jobs <- salaries |>
+  filter(job_title %in% c("Data Scientist", "Data Analyst", "Machine Learning Engineer", "ML Engineer", "AI Developer", "AI Scientist")) |>
+  mutate(job_type = if_else(str_detect(job_title, "Data"), "Data Scientist/Analyst", "ML/AI"))
+
+```
+
+Now, we want to compute our observed statistic:
+
+```{r}
+#| label: observed stat
+
+salary_jobs |>
+  group_by(job_type) |>
+  summarise(mean_salary = mean(salary_in_usd))
+```
+
+$\bar{x}_{ai} - \bar{x}_{data} = 23882$
+
+The sample mean salary difference between ai jobs and data science jobs is 23,882$.
+
+We can now use the central limit theorom to carry out our hypothesis test, as the observations are independent from one another, and there are at least 30 observations in each group. This can be seen below:
+
+```{r}
+#| label: CLT-check
+
+salary_jobs |>
+  group_by(job_type) |>
+  summarise(n = n())
+
+```
+
+Now we can use our standard deviations and observation counts for each group to calculate our standard error:
+
+```{r}
+#| label: CLT
+
+salary_jobs |>
+  group_by(job_type) |>
+  summarise(sd_salary = sd(salary_in_usd))
+
+sdAI <- 64176.44
+sdData <- 57389.76
+nAI <- 296
+nData <- 1173
+SE <- sqrt(((sdAI*sdAI)/(nAI)) + ((sdData*sdData)/(nData)))
+```
+
+Now, we can use the standard error calculted above to generate our p-value. We will use a t-distribution because we do not know the population standard deviation and our response vairblae isn't catagorical (salary is quantitative). Also, the n values aren't large enough for each group (the smaller group has 296 samples). This includes calculating our t-score and then using this in combination with our standard error to find the p-value.
+
+```{r}
+#| label: p-value
+
+tscore <- (23882 - 0) / SE
+
+pt(tscore, df = 295, lower.tail = FALSE)
+```
+
+Our p-value is approximately 0 (6.877573e-09; < 0.001). This means that is is extremely unlikely (nearly a probability of 0) of observing our sample mean salary difference of \$23882 (or a larger age difference), if our null hypothesis that the true mean salary of the two job types are equal is true. This is statistically significant, as we are able to reject our null hyopthesis using a significane level of 0.05 (or 0.01). There is strong evidence to conclude the alternative hypothesis that the true mean salary of ML/AI jobs ($\mu_{ai}$) is greater than the true mean salary of Data Science/Analyst jobs ($\mu_{data}$).
+
+
+
+
 ```{r}
 #| label: lin-reg
 
 
 salary_jobs <- salaries |>
-  filter(job_title %in% c("Data Scientist", "Data Analyst", "Machine Learning Engineer"))
+  filter(job_title %in% c("Data Scientist", "Data Analyst", "Machine Learning Engineer", "ML Engineer", "AI Developer", "AI Scientist"))
 
 salary_jobs <- salary_jobs |>
   mutate(work_year = work_year - 2020) |>
@@ -63,7 +143,7 @@ salary_jobs <- salary_jobs |>
 
 linear_reg() |>
   set_engine("lm") |>
-  fit(salary_in_usd ~ work_year * job_title, data = salary_jobs) |>
+  fit(salary_in_usd ~ work_year * job_type, data = salary_jobs) |>
   tidy()
 ```
 
@@ -97,10 +177,8 @@ boot_df |>
 #| label: plot-salaries-by-year
 
 salary_jobs |>
-  ggplot(aes(x = work_year, y = salary_in_usd, color = job_title)) +
-  geom_point(position = "jitter") +
-  labs(title = "Plot of salaries by year, US and Non US",
-       x = "Year", y = "Salary (USD)", color = "Job") +
+  ggplot(aes(x = work_year, y = salary_in_usd, color = job_title, fill = US_based)) +
+  geom_point() +
   facet_wrap("US_based")
 
 ```
