@@ -198,6 +198,28 @@ From this tidy, we can see that the mean salary of ML/AI jobs is $5986.455 highe
 
 
 ```{r}
+#| label: plot-linear-reg
+
+salary_jobs |>
+     ggplot(aes(x = work_year, y = salary_in_usd, color = job_type)) +
+     geom_point(alpha = 0.05) +
+     labs(
+      title = "Average Salary per year by Job Type",
+       x = "Years Since 2020",
+       y = "Salary (USD)",
+       color = "Job Type"
+    ) +
+    geom_smooth(method = "lm", se = FALSE, linetype = "dashed")
+```
+Although it's a small difference, we can see that ML/AI job salaries have a steeper slope, meaning they are increasing at a faster rate in recent years. This alligns with our hyophtesis. **expand on this in results section.
+
+
+We also want to determine how this relationship differs between companies that are based in the US vs. companies that are based outside of the US. We can do this by creating the same linear regression plot, except this time specififying which observations are from US-based companies and which aren't:
+
+
+
+```{r}
+#| label: plot-salaries-by-year
 
 salary_jobs |>
      ggplot(aes(x = work_year, y = salary_in_usd, color = job_type)) +
@@ -209,36 +231,32 @@ salary_jobs |>
        color = "job_title"
     ) +
     geom_smooth(method = "lm", se = FALSE, linetype = "dashed")
-```
-Although it's a small difference, we can see that ML/AI job salaries have a steeper slope, meaning they are increasing at a faster rate in recent years. This alligns with our hyophtesis. **expand on this in results section.
-
-
-```{r}
-boot_df <- salary_jobs |>
-  specify(response = salary_in_usd) |>
-  generate(reps = 5000, type = "bootstrap") |>
-  calculate(stat = "mean")
-
-boot_df |>
-  summarize(lower = quantile(stat, 0.005),
-            upper = quantile(stat, 0.995))
-```
-
-```{r}
-#| label: plot-salaries-by-year
 
 salary_jobs |>
-  ggplot(aes(x = work_year, y = salary_in_usd, color = job_title, fill = US_based)) +
-  geom_point() +
-  facet_wrap("US_based")
+  mutate("US_based" = if_else(company_location == "US", "US-Based", "Not US-Based")) |>
+  ggplot(aes(x = work_year, y = salary_in_usd, color = job_type, fill = US_based)) +
+  geom_point(alpha = 0.1) +
+  labs(
+      title = "Average Salary per year by Job Type for US-based Companies \n vs. non US-based Companies ",
+       x = "Years Since 2020",
+       y = "Salary (USD)",
+       color = "Job Type",
+      fill = ""
+    ) +
+  facet_wrap("US_based") + 
+  guides(fill = "none") + 
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed")
 
 
 
-  mutate("US_based" = if_else(company_location == "US", "US", "Not US"))
+
 
 ```
 
-summary statistics
+We can see that for non-US based companies, ML/AI jobs are increasing at a much more rapid pace than Data Scientist/Analyst jobs, and they have taken over Data Scientist/Analyst jobs in salaries. Also, when we observe strictly US-based companies, ML/AI jobs have consistantly had higher salaries since 2020, however they don't seem to be growing at as rapid of a pace as non US-based AI/ML jobs. Suprisingly, they don't even seem to be growing much faster than Data Science jobs in the US. **expand on this a lot in results section
+
+
+summary statistics - **DO WE NEED THIS??
 
 ```{r}
 #| label: means
