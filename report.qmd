@@ -10,11 +10,11 @@ echo: false
 
 Over the years, technology has continued to advance and become more present in one's daily life. Specifically, the presence of artificial intelligence and machine learning has drastically grown. As we have seen applications such as ChatGPT, algorithms automatically detecting objects, or live captions on videos, our group was intrigued by this technology's growing influence on society. It would thus be likely that employees in this sector of technology roles would be benefitting salary wise as they are in high demand. We thus wanted to investigate how these jobs' salaries are changing in comparison to other well known tech jobs, like data analysts/scientists. As an added bonus, this allows us to explore what this class has been teaching us about all semester - data scientists!
 
-Our research topic aims to understand various tech jobs and how they pay on average in the U.S. and globally. Our research question is: How do the salaries of machine learning/AI jobs and that of data scientists/analyst jobs compare to one another, and are they changing with time? Also, are these results different for companies in the US vs. outside the US?
+Our research topic aims to understand various tech jobs and how they pay on average in the U.S. and globally. Our research question is: How do the salaries of machine learning/AI jobs and that of data scientists/analyst jobs compare to one another, and how are they changing with time? Also, are these results different for companies in the US vs. outside the US?
 
 Our hypothesis is that machine learning/AI salaries not only will be higher overall, but will have increased more rapidly in recent years in comparison to data scientist/analyst jobs. We also predict that US-based workers will have higher mean salaries. We are making this educated guess due to the rising popularity of artificial intelligence/machine learning in our everyday lives, which generates higher demand leading to higher wages. We also believe that the United States has very well established tech companies that generate overall higher salaries. 
 
-The source of the data is ai-jobs.net. It is a website for posting tech jobs and analyzing trends in job data. The site collects salary information anonymously from professionals all over the world in the AI/ML/Data Science space and makes it publicly available. This particular data set is a collection of global AI, ML, and Data salaries. The vast majority of the data was collected in the years of 2021-2023, inclusive. Each observation records the person's job information. This includes work year, employment type, job title, salary, employee residence, company location, etc.. Overall, there are 3046 observations and 11 variables.
+The source of the data is ai-jobs.net. It is a website for posting tech jobs and analyzing trends in job data. The site collects salary information anonymously from professionals all over the world in the AI/ML/Data Science space and makes it publicly available. This particular data set is a collection of global AI, ML, and Data salaries. The vast majority of the data was collected in the years of 2021-2023, inclusive. Each observation records the person's job information. This includes work year, employment type, job title, salary, employee residence, company location, etc.. Overall, there are 3046 observations and 11 variables. The variables all correspond to a worker's characteristics, including their salary, company location, experience level, etc.
 
 We are most interested in the salary_in_usd variable as our response variable, which is quantitative, along with categorical explanatory variables including job_title, company_location, and work_year. We used the job_title variable to filter out all the alternate tech jobs outside of our focus. Subsequently, we needed to pair together the data for employees with machine learning and artificial intelligence jobs into one variable, and the same for those with data scientist and analyst jobs. We used the job_title variable to filter the data into the categories and stored them in two new variables: ML/AI and datascientist/analyst.
 
@@ -75,7 +75,7 @@ $H_a: \mu_{ai} - \mu_{data} > 0$
 
 Our alternative hypothesis is that the true mean salary of machine learning/AI jobs ($\mu_{ai}$) is greater than the true mean salary of data scientist/data analyst jobs ($\mu_{data}$).
 
-Our next step is creating our two catagories of jobs from our data set, so we can start generating statistics:
+Our next step is creating our two categories of jobs from our data set, so we can start generating statistics. The job categories will be data scientist/analysts, while the other is machine learning and artificial intelligence roles.
 
 ```{r}
 #| label: create-groups
@@ -86,7 +86,7 @@ salary_jobs <- salaries |>
 
 ```
 
-Now, we want to compute our observed statistic:
+Now, we want to compute our observed statistic for mean salaries in these job categories:
 
 ```{r}
 #| label: observed stat
@@ -98,9 +98,9 @@ salary_jobs |>
 
 $\bar{x}_{ai} - \bar{x}_{data} = 23882$
 
-The sample mean salary difference between ai jobs and data science jobs is 23,882\$.
+The sample mean salary difference between AI jobs and data science jobs is 23,882\$.
 
-We can now use the central limit theorom to carry out our hypothesis test, as the observations are independent from one another, and there are at least 30 observations in each group. This can be seen below:
+We can now use the central limit theorem to carry out our hypothesis test, as the observations are independent from one another, and there are at least 30 observations in each group. This can be seen below:
 
 ```{r}
 #| label: CLT-check
@@ -127,7 +127,7 @@ nData <- 1173
 SE <- sqrt(((sdAI*sdAI)/(nAI)) + ((sdData*sdData)/(nData)))
 ```
 
-Now, we can use the standard error calculted above to generate our p-value. We will use a t-distribution because we do not know the population standard deviation and our response vairblae isn't catagorical (salary is quantitative). Also, the n values aren't large enough for each group (the smaller group has 296 samples). This includes calculating our t-score and then using this in combination with our standard error to find the p-value.
+Now, we can use the standard error calculated above to generate our p-value. We will use a t-distribution because we do not know the population standard deviation and our response variable isn't categorical (salary is quantitative). Also, the n values aren't large enough for each group (the smaller group has 296 samples). Below we calculate our t-score and then use that in combination with our standard error to find the p-value.
 
 ```{r}
 #| label: p-value
@@ -137,11 +137,11 @@ tscore <- (23882 - 0) / SE
 pt(tscore, df = 295, lower.tail = FALSE)
 ```
 
-Our p-value is approximately 0 (6.877573e-09; \< 0.001). This means that is is extremely unlikely (nearly a probability of 0) of observing our sample mean salary difference of \$23882 (or a larger age difference), if our null hypothesis that the true mean salary of the two job types are equal is true. This is statistically significant, as we are able to reject our null hyopthesis using a significane level of 0.05 (or 0.01). There is strong evidence to conclude the alternative hypothesis that the true mean salary of ML/AI jobs ($\mu_{ai}$) is greater than the true mean salary of Data Science/Analyst jobs ($\mu_{data}$).
+Our p-value is approximately 0 (6.877573e-09; \< 0.001). This means that is is extremely unlikely (nearly a probability of 0) of observing our sample mean salary difference of \$23882 (or a larger age difference), if our null hypothesis that the true mean salary of the two job types are equal is true. This is statistically significant, as we are able to reject our null hypthesis using a significance level of 0.05 (or 0.01). There is strong evidence to conclude the alternative hypothesis that the true mean salary of ML/AI jobs ($\mu_{ai}$) is greater than the true mean salary of Data Science/Analyst jobs ($\mu_{data}$).
 
 This conclusion aligns with our hypothesis \*\* - expand on this in results
 
-We can also use logistic regression to show the probability that your job is one of the two catagories (AI/ML vs. Data Scientist/Analyst) based on your salary. We do this by fitting a model to predict job type (catagorical) based on salary (quantitative). We are using logistic reggression for this reason, as it is better at working with catagorical response variables and quantitative explanatory variables. Then, we add in our predicted probability values to our dataset, and finally plot it.
+We can also use logistic regression to show the probability that a job is one of the two categories (AI/ML vs. Data Scientist/Analyst) based on salary. We do this by fitting a model to predict job type (categorical) based on salary (quantitative). We are using logistic regression for this reason, as it is better at working with categorical response variables and quantitative explanatory variables. Then, we add in our predicted probability values to our data set, and finally plot it.
 
 ```{r}
 #| label: log-reg
@@ -164,11 +164,11 @@ ggplot(data = salary_jobs) +
        )
 ```
 
-We can see from the plot that as salary increases, there is a higher probability that you have a ML/AI, rather than a Data Scientist/Analyst. This furthe shows that AI/ML jobs tend to have higher mean salaries than data jobs, which alligns with our hypothesis.
+We can see from the plot that as salary increases, there is a higher probability that you have a ML/AI, rather than a Data Scientist/Analyst. This further shows that AI/ML jobs tend to have higher mean salaries than data jobs, which aligns with our hypothesis.
 
 \*\*expand on this in results section
 
-We also want to look at how the salaries of these two job types have changed in recent years. We can do this by fitting a linear regression model with salary as our response variable and year and job type interacting as our explanatory variables. To do this we need to adjust our work_year variable. In the original dataset the year is stated as the actual year (2020, 2021, 2022, etc...), however we need the year to be lower values (0, 1, 2) so that it works visually in a linear regression model. So, we will subtract 2020 from each of the work_year observations, such that work_year is effectively years since 2020.
+We also want to look at how the salaries of these two job types have changed in recent years. We can do this by fitting a linear regression model with salary as our response variable and year and job type interacting as our explanatory variables. To do this we need to adjust our work_year variable. In the original data set the year is stated as the actual year (2020, 2021, 2022, etc...), however we need the year to be lower values (0, 1, 2) so that it works visually in a linear regression model. So, we will subtract 2020 from each of the work_year observations, such that work_year is effectively years since 2020.
 
 ```{r}
 #| label: lin-reg
@@ -193,7 +193,7 @@ From this, the individual salary equations are as followed:
 
 Data Scientist/Analyst: $\widehat{salary\_in\_usd} = 80463.128 + 19258.594*year$ ML/AI: $\widehat{salary\_in\_usd} = (80463.128 + 5986.455) + (19258.594 + 7083.503)*year$
 
-From this tidy, we can see that the mean salary of ML/AI jobs is \$5986.455 higher than the mean salary for Data Scientist/Analyst jobs. Also, as each year goes by, the salary for Data Science jobs goes up by \$19, 258.594, while the salary for ML/AI jobs goes up by \$26342.1. We can plot this fitted model below:
+From this tidy, we can see that the mean salary of ML/AI jobs is \$5986.455 higher than the mean salary for Data Scientist/Analyst jobs. Also, as each year goes by, the salary for Data Science jobs goes up by \$19, 258.594, while the salary for ML/AI jobs goes up by \$26,342.1. We can plot this fitted model below:
 
 ```{r}
 #| label: plot-linear-reg
@@ -210,9 +210,9 @@ salary_jobs |>
     geom_smooth(method = "lm", se = FALSE, linetype = "dashed")
 ```
 
-Although it's a small difference, we can see that ML/AI job salaries have a steeper slope, meaning they are increasing at a faster rate in recent years. This alligns with our hyophtesis. \*\*expand on this in results section.
+Although it's a small difference, we can see that ML/AI job salaries have a steeper slope, meaning they are increasing at a faster rate in recent years. This aligns with our hypothesis. \*\*expand on this in results section.
 
-We also want to determine how this relationship differs between companies that are based in the US vs. companies that are based outside of the US. We can do this by creating the same linear regression plot, except this time specififying which observations are from US-based companies and which aren't:
+We also want to determine how this relationship differs between companies that are based in the US vs. companies that are based outside of the US. We can do this by creating the same linear regression plot, except this time specifying which observations are from US-based companies and which aren't:
 
 ```{r}
 #| label: plot-salaries-by-year
@@ -249,78 +249,79 @@ salary_jobs |>
 
 ```
 
-We can see that for non-US based companies, ML/AI jobs are increasing at a much more rapid pace than Data Scientist/Analyst jobs, and they have taken over Data Scientist/Analyst jobs in salaries. Also, when we observe strictly US-based companies, ML/AI jobs have consistantly had higher salaries since 2020, however they don't seem to be growing at as rapid of a pace as non US-based AI/ML jobs. Suprisingly, they don't even seem to be growing much faster than Data Science jobs in the US. \*\*expand on this a lot in results section
+We can see that for non-US based companies, ML/AI jobs are increasing at a much more rapid pace than Data Scientist/Analyst jobs, and they have taken over Data Scientist/Analyst jobs in salaries. Also, when we observe strictly US-based companies, ML/AI jobs have consistently had higher salaries since 2020, however they don't seem to be growing at as rapid of a pace as non US-based AI/ML jobs. Surprisingly, they don't even seem to be growing much faster than Data Science jobs in the US. \*\*expand on this a lot in results section
 
 summary statistics - \*\*DO WE NEED THIS??
 
 ```{r}
 #| label: means
 
-salary_jobs |>
-  filter(job_title == "Data Analyst") |>
-  filter(US_based == "US") |>
-  summarize(mean(salary_in_usd))
-
-salary_jobs |>
-  filter(job_title == "Data Analyst") |>
-  filter(US_based != "US") |>
-  summarize(mean(salary_in_usd))
-
-salary_jobs |>
-  filter(job_title == "Data Scientist") |>
-  filter(US_based == "US") |>
-  summarize(mean(salary_in_usd))
-
-salary_jobs |>
-  filter(job_title == "Data Scientist") |>
-  filter(US_based != "US") |>
-  summarize(mean(salary_in_usd))
-
-salary_jobs |>
-  filter(job_title == "Machine Learning Engineer") |>
-  filter(US_based == "US") |>
-  summarize(mean(salary_in_usd))
-
-salary_jobs |>
-  filter(job_title == "Machine Learning Engineer") |>
-  filter(US_based != "US") |>
-  summarize(mean(salary_in_usd))
+# salary_jobs |>
+#   filter(job_title == "Data Analyst") |>
+#   filter(US_based == "US") |>
+#   summarize(mean(salary_in_usd))
+# 
+# salary_jobs |>
+#   filter(job_title == "Data Analyst") |>
+#   filter(US_based != "US") |>
+#   summarize(mean(salary_in_usd))
+# 
+# salary_jobs |>
+#   filter(job_title == "Data Scientist") |>
+#   filter(US_based == "US") |>
+#   summarize(mean(salary_in_usd))
+# 
+# salary_jobs |>
+#   filter(job_title == "Data Scientist") |>
+#   filter(US_based != "US") |>
+#   summarize(mean(salary_in_usd))
+# 
+# salary_jobs |>
+#   filter(job_title == "Machine Learning Engineer") |>
+#   filter(US_based == "US") |>
+#   summarize(mean(salary_in_usd))
+# 
+# salary_jobs |>
+#   filter(job_title == "Machine Learning Engineer") |>
+#   filter(US_based != "US") |>
+#   summarize(mean(salary_in_usd))
 ```
 
 ```{r}
 #| label: medians
 
-salary_jobs |>
-  filter(job_title == "Data Analyst") |>
-  filter(US_based == "US") |>
-  summarize(median(salary_in_usd))
+# salary_jobs |>
+#   filter(job_title == "Data Analyst") |>
+#   filter(US_based == "US") |>
+#   summarize(median(salary_in_usd))
+# 
+# salary_jobs |>
+#   filter(job_title == "Data Analyst") |>
+#   filter(US_based != "US") |>
+#   summarize(median(salary_in_usd))
+# 
+# salary_jobs |>
+#   filter(job_title == "Data Scientist") |>
+#   filter(US_based == "US") |>
+#   summarize(median(salary_in_usd))
+# 
+# salary_jobs |>
+#   filter(job_title == "Data Scientist") |>
+#   filter(US_based != "US") |>
+#   summarize(median(salary_in_usd))
+# 
+# salary_jobs |>
+#   filter(job_title == "Machine Learning Engineer") |>
+#   filter(US_based == "US") |>
+#   summarize(median(salary_in_usd))
+# 
+# salary_jobs |>
+#   filter(job_title == "Machine Learning Engineer") |>
+#   filter(US_based != "US") |>
+#   summarize(median(salary_in_usd))
 
-salary_jobs |>
-  filter(job_title == "Data Analyst") |>
-  filter(US_based != "US") |>
-  summarize(median(salary_in_usd))
-
-salary_jobs |>
-  filter(job_title == "Data Scientist") |>
-  filter(US_based == "US") |>
-  summarize(median(salary_in_usd))
-
-salary_jobs |>
-  filter(job_title == "Data Scientist") |>
-  filter(US_based != "US") |>
-  summarize(median(salary_in_usd))
-
-salary_jobs |>
-  filter(job_title == "Machine Learning Engineer") |>
-  filter(US_based == "US") |>
-  summarize(median(salary_in_usd))
-
-salary_jobs |>
-  filter(job_title == "Machine Learning Engineer") |>
-  filter(US_based != "US") |>
-  summarize(median(salary_in_usd))
 ```
 
 Result
 
-In order to arrive at an accurate and appropriate conclusion for our hypothesis: that machine learning/AI salaries will have increased in recent years more so than Data scientist/analyst jobs and that US-based workers will have higher mean salaries, we chose to visualize our data set in multiple ways. Two clear observations were confirmed in our plots. First, the mean salaries in 2020 were ordered from lowest to highest: Data Analyst, Data Scientist, and Machine Learning Engineer. This can be seen from our tidy(), as our intercept value is 76466.8 (the mean Data Analyst salary in 2020), the Data Scientist intercept is (76466.8 + 148.9), and the Machine Learning intercept is (76466.8 + 21460.2). These intercept values represented the mean salaries in 2020. This also confirms our hypothesis that Machine learning salaries are higher than data scientist/analyst jobs. The second observation is that rates at which job salaries have increased since 2020 are ordered from lowest to highest such as Data Analyst, Machine Learning Engineer, and Data Scientist. This can also be seen from our tidy(), as the baseline slope (slope for data analysts) is 12817.4 usd/year. Then, the Machine Learning Engineer slope is (12817.4 + 8996.96), and the Data Scientist slope is (12817.4 + 14633.8). Lastly, the mean summary statistic also is consistent with our hypothesis that the mean salary is highest for Machine learning (\$149512.7) compared to Data scientists (\$136405.7) and Data Analysts (\$106134.4) mean salaries.
+In order to arrive at an accurate and appropriate conclusion for our hypothesis: that machine learning/AI salaries will be higher and have increased more rapidly than Data scientist/analyst jobs in recent years and that US-based workers will have higher mean salaries, we chose to visualize our data set using linear and logistic regression plots.Two clear observations were confirmed in our plots. First, the mean salaries in 2020 were ordered from lowest to highest: Data Analyst, Data Scientist, and Machine Learning Engineer. This can be seen from our tidy(), as our intercept value is 76466.8 (the mean Data Analyst salary in 2020), the Data Scientist intercept is (76466.8 + 148.9), and the Machine Learning intercept is (76466.8 + 21460.2). These intercept values represented the mean salaries in 2020. This also confirms our hypothesis that Machine learning salaries are higher than data scientist/analyst jobs. The second observation is that rates at which job salaries have increased since 2020 are ordered from lowest to highest such as Data Analyst, Machine Learning Engineer, and Data Scientist. This can also be seen from our tidy(), as the baseline slope (slope for data analysts) is 12817.4 usd/year. Then, the Machine Learning Engineer slope is (12817.4 + 8996.96), and the Data Scientist slope is (12817.4 + 14633.8). Lastly, the mean summary statistic also is consistent with our hypothesis that the mean salary is highest for Machine learning (\$149512.7) compared to Data scientists (\$136405.7) and Data Analysts (\$106134.4) mean salaries.
