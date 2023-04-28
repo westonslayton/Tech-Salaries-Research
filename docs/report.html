@@ -202,7 +202,7 @@ $ company_size       &lt;chr&gt; "L", "M", "M", "M", "M", "M", "M", "M", "M", "M
 2 ML/AI                    296</code></pre>
 </div>
 </div>
-<p>Now we can use our standard deviations and observation counts for each group to calculate our standard error:</p>
+<p>Now we calculate our standard deviations:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
@@ -210,6 +210,12 @@ $ company_size       &lt;chr&gt; "L", "M", "M", "M", "M", "M", "M", "M", "M", "M
   &lt;chr&gt;                      &lt;dbl&gt;
 1 Data Scientist/Analyst    57390.
 2 ML/AI                     64176.</code></pre>
+</div>
+</div>
+<p>Now we can use our standard deviations and observation counts for each group to calculate our standard error:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4089.263</code></pre>
 </div>
 </div>
 <p>Now, we can use the standard error calculated above to generate our p-value. We will use a t-distribution because we do not know the population standard deviation and our response variable isn’t categorical (salary is quantitative). Also, the n values aren’t large enough for each group (the smaller group has 296 samples). Below we calculate our t-score and then use that in combination with our standard error to find the p-value.</p>
@@ -224,6 +230,13 @@ $ company_size       &lt;chr&gt; "L", "M", "M", "M", "M", "M", "M", "M", "M", "M
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="report_files/figure-html/log-reg-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  term             estimate  std.error statistic  p.value
+  &lt;chr&gt;               &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)   -2.27       0.168         -13.5  1.76e-41
+2 salary_in_usd  0.00000661 0.00000109      6.03 1.59e- 9</code></pre>
 </div>
 </div>
 <p>We can see from the plot that as salary increases, there is a higher probability that you have a ML/AI, rather than a Data Scientist/Analyst. This further shows that AI/ML jobs tend to have higher mean salaries than data jobs, which aligns with our hypothesis.</p>
@@ -279,7 +292,12 @@ $ company_size       &lt;chr&gt; "L", "M", "M", "M", "M", "M", "M", "M", "M", "M
 
 </div>
 <p>Result</p>
+<p>ORIGINAL</p>
 <p>In order to arrive at an accurate and appropriate conclusion for our hypothesis: that machine learning/AI salaries will be higher and have increased more rapidly than Data scientist/analyst jobs in recent years and that US-based workers will have higher mean salaries, we chose to visualize our data set using linear and logistic regression plots.Two clear observations were confirmed in our plots. First, the mean salaries in 2020 were ordered from lowest to highest: Data Analyst, Data Scientist, and Machine Learning Engineer. This can be seen from our tidy(), as our intercept value is 76466.8 (the mean Data Analyst salary in 2020), the Data Scientist intercept is (76466.8 + 148.9), and the Machine Learning intercept is (76466.8 + 21460.2). These intercept values represented the mean salaries in 2020. This also confirms our hypothesis that Machine learning salaries are higher than data scientist/analyst jobs. The second observation is that rates at which job salaries have increased since 2020 are ordered from lowest to highest such as Data Analyst, Machine Learning Engineer, and Data Scientist. This can also be seen from our tidy(), as the baseline slope (slope for data analysts) is 12817.4 usd/year. Then, the Machine Learning Engineer slope is (12817.4 + 8996.96), and the Data Scientist slope is (12817.4 + 14633.8). Lastly, the mean summary statistic also is consistent with our hypothesis that the mean salary is highest for Machine learning ($149512.7) compared to Data scientists ($136405.7) and Data Analysts ($106134.4) mean salaries.</p>
+<p>CURRENT DRAFT:</p>
+<p>In order to arrive at an accurate and appropriate conclusion for our hypothesis: that machine learning/AI salaries will be higher and have increased more rapidly than Data scientist/analyst jobs in recent years and that US-based workers will have higher mean salaries, we chose to analyze our data using a few different techniques. We chose to conduct a hypothesis test to determine independence of the true mean salaries of the two categories of jobs we were assessing, and to examine their differences from one another.&nbsp;</p>
+<p>In the end we were able to support part of our hypothesis, but not our entire prediction. Our analysis suggests that machine learning/AI jobs do have overall higher mean salaries, both in and outside the U.S, and have increased at a more rapid rate over recent years. However, our visualizations also showed that ML/AI jobs were growing more rapidly in non-U.S. based companies than U.S. based companies. In fact, data scientists/analyst job salaries are increasing more rapidly than ML/AI salaries within the U.S..&nbsp; This was an aspect our group did not expect to occur. We were able to conclude these findings given our linear and logistic regression models. In our linear regression models we observed the relationship between year and salary both in and outside the U.S. for the two categories of jobs. From the tidy table we can see a calculated $5986.455 overall higher mean salary for ML/AI jobs vs.&nbsp;Data Scientist/Analyst jobs. We also see that for each year, ML/AI jobs are growing at a rate of $7083.503 more than data scientist/analyst jobs. This adds up to a growth rate of $19, 258.59 for data scientist/analyst jobs and $26,342.10 for ML/AI jobs. This data for the jobs overall, is supportive of our hypothesis. We further saw this in the visualization for our linear regression model as the ML/AI line had a steeper slope and remained above the line for data scientist/analyst salaries throughout the visualization. This output made a lot of sense following our logistic regression visualization. We used the logistic regression model to model the likelihood that someone has a ML/AI job versus a data scientist/analyst job based on salary. In this visualization there seems to be a clear correlation between salary and job. As salary increased, the likelihood that one holds a ML/AI job clearly increases. This further suggests that ML/AI jobs have higher wages.&nbsp;</p>
+<p>However, once we took the liberty of exploring the comparison of salaries for these jobs in the U.S. and outside the U.S. the results differed from our expectations.&nbsp;</p>
 
 
 </section>

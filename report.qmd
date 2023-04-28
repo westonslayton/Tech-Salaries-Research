@@ -203,7 +203,9 @@ $\widehat{salary\_in\_usd} = 80463.128 + 19258.594*year + 5986.455*ML/AI + 7083.
 
 From this, the individual salary equations are as followed:
 
-Data Scientist/Analyst: $\widehat{salary\_in\_usd} = 80463.128 + 19258.594*year$ ML/AI: $\widehat{salary\_in\_usd} = (80463.128 + 5986.455) + (19258.594 + 7083.503)*year$
+Data Scientist/Analyst: $\widehat{salary\_in\_usd} = 80463.128 + 19258.594*year$
+
+ML/AI: $\widehat{salary\_in\_usd} = (80463.128 + 5986.455) + (19258.594 + 7083.503)*year$
 
 From this tidy, we can see that the mean salary of ML/AI jobs is \$5986.455 higher than the mean salary for Data Scientist/Analyst jobs. Also, as each year goes by, the salary for Data Science jobs goes up by \$19, 258.594, while the salary for ML/AI jobs goes up by \$26,342.1. We can plot this fitted model below:
 
