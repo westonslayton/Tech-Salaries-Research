@@ -111,7 +111,7 @@ salary_jobs |>
 
 ```
 
-Now we can use our standard deviations and observation counts for each group to calculate our standard error:
+Now we can use our standard deviations and observation counts for each group to calculate our standard error in order to estimate the accuracy/consistency of our sample:
 
 ```{r}
 #| label: CLT
