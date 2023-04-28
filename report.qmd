@@ -125,6 +125,8 @@ sdData <- 57389.76
 nAI <- 296
 nData <- 1173
 SE <- sqrt(((sdAI*sdAI)/(nAI)) + ((sdData*sdData)/(nData)))
+
+SE
 ```
 
 Now, we can use the standard error calculated above to generate our p-value. We will use a t-distribution because we do not know the population standard deviation and our response variable isn't categorical (salary is quantitative). Also, the n values aren't large enough for each group (the smaller group has 296 samples). Below we calculate our t-score and then use that in combination with our standard error to find the p-value.
