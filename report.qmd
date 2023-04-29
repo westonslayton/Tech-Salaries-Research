@@ -245,30 +245,22 @@ We also want to determine how this relationship differs between companies that a
 #| label: plot-salaries-by-year
 
 salary_jobs |>
-     ggplot(aes(x = work_year, y = salary_in_usd, color = job_type)) +
-     geom_point(alpha = 0.05) +
-     labs(
-      title = "Average Salary per year by Job Title",
-       x = "Years Since 2020",
-       y = "Salary (USD)",
-       color = "job_title"
-    ) +
-    geom_smooth(method = "lm", se = FALSE, linetype = "dashed")
-
-salary_jobs |>
   mutate("US_based" = if_else(company_location == "US", "US-Based", "Not US-Based")) |>
   ggplot(aes(x = work_year, y = salary_in_usd, color = job_type, fill = US_based)) +
   geom_point(alpha = 0.1) +
   labs(
       title = "Average Salary per year by Job Type for US-based Companies \n vs. non US-based Companies ",
-       x = "Years Since 2020",
+       x = "Year",
        y = "Salary (USD)",
        color = "Job Type",
       fill = ""
     ) +
   facet_wrap("US_based") + 
   guides(fill = "none") + 
-  geom_smooth(method = "lm", se = FALSE, linetype = "dashed")
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed") + 
+  scale_x_continuous(breaks=c(0, 1, 2, 3), labels=c("2020", "2021", "2022", "2023")) + 
+  scale_y_continuous(labels = comma) + 
+  theme(panel.spacing.x = unit(2, "lines"))
 
 
 
