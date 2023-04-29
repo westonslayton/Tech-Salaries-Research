@@ -154,7 +154,7 @@ This conclusion aligns with our hypothesis \*\* - expand on this in results
 We can also use logistic regression to show the probability that a job is one of the two categories (AI/ML vs. Data Scientist/Analyst) based on salary. We do this by fitting a model to predict job type (categorical) based on salary (quantitative). We are using logistic regression for this reason, as it is better at working with categorical response variables and quantitative explanatory variables. Then, we add in our predicted probability values to our data set, and finally plot it.
 
 ```{r}
-#| label: log-reg
+#| label: log-reg-tidy
 
 salary_jobs$job_type<-as.factor(salary_jobs$job_type)
 
@@ -162,18 +162,29 @@ model <- logistic_reg() |>
   set_engine("glm") |>
   fit(job_type ~ salary_in_usd, data = salary_jobs, family = "binomial")
 
+model|>
+  tidy()
+
+
+```
+Add Analysis On Tidy Table - I can do this in a sec (wes)
+
+```{r}
+#| label: log-reg-plot
+
 salary_jobs <- salary_jobs |>
   mutate(pred_prob = predict(model$fit, type = "response"))
+
 
 ggplot(data = salary_jobs) + 
   geom_point(aes(x = salary_in_usd, y = as.numeric(job_type) -1, color = job_type)) + 
   geom_line(aes(x = salary_in_usd, y = pred_prob)) + 
   labs(x = "Salary (USD)", 
        y = "Predicted Probability You Have a ML/AI job", 
-       color = "Job Type"
+       color = "Job Type",
+       title = "Probability You Work in ML/AI vs. Data Science Based On Salary"
        )
-model|>
-  tidy()
+
 ```
 
 We can see from the plot that as salary increases, there is a higher probability that you have a ML/AI, rather than a Data Scientist/Analyst. This further shows that AI/ML jobs tend to have higher mean salaries than data jobs, which aligns with our hypothesis.
@@ -217,11 +228,13 @@ salary_jobs |>
      geom_point(alpha = 0.05) +
      labs(
       title = "Average Salary per year by Job Type",
-       x = "Years Since 2020",
+       x = "Year",
        y = "Salary (USD)",
        color = "Job Type"
     ) +
-    geom_smooth(method = "lm", se = FALSE, linetype = "dashed")
+    geom_smooth(method = "lm", se = FALSE, linetype = "dashed") + 
+    scale_x_continuous(breaks=c(0, 1, 2, 3), labels=c("2020", "2021", "2022", "2023")) + 
+    scale_y_continuous(labels = comma)
 ```
 
 Although it's a small difference, we can see that ML/AI job salaries have a steeper slope, meaning they are increasing at a faster rate in recent years. This aligns with our hypothesis. \*\*expand on this in results section.
