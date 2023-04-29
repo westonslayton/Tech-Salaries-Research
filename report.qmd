@@ -81,7 +81,7 @@ In addition, our study aims to push this comparison by looking at mean salaries 
 
 This research is important for anyone interested, like we are, in the ever-growing field of data science and the possible future roles we might hold. Therefore we aim to contextualize the salaries of these different positions within the data scientist field and how that might differ depending on where you work. After all, the demand and usage for Data Science are different in different places; therefore, it is useful that we examine these salaries in two ways: over time, and not just in a domestic vacuum, but internationally as well. 
 
-**Methodology:**
+##**Methodology:**
 
 The first step in assessing our research question is determining the difference in salaries between our two groups of jobs. Accomplishing this requires a hypothesis test, as we want to test for independence between the true mean salaries of our groups. A confidence interval would only be helpful in determining a range of sample mean differences, while a hypothesis test can confirm our hypothesis that the true mean salaries for Machine Learning/AI jobs are higher than the true mean salaries for Data Scientist/Data Analyst jobs.
 
@@ -285,7 +285,7 @@ salary_jobs |>
 
 We can see that for non-US based companies, ML/AI jobs are increasing at a much more rapid pace than Data Scientist/Analyst jobs, and they have taken over Data Scientist/Analyst jobs in salaries. Also, when we observe strictly US-based companies, ML/AI jobs have consistently had higher salaries since 2020, however they don't seem to be growing at as rapid of a pace as non US-based AI/ML jobs. Surprisingly, they don't even seem to be growing much faster than Data Science jobs in the US.
 
-**Results:**
+##**Results:**
 
 In order to arrive at an accurate and appropriate conclusion for our hypothesis, machine learning/AI salaries will be higher and have increased more rapidly than Data scientist/analyst jobs in recent years and that US-based workers will have higher mean salaries, and answer our research question, we chose to analyze our data using a few different techniques: linear and logistic regression, hypothesis testing, and other visualizations. 
 
@@ -297,9 +297,9 @@ However, once we explored the second part of our hypothesis, the comparison of s
 
 This was an aspect our group did not expect to occur. This means that our initial hypothesis was partially proven with interesting exceptions that we would be interested in investigating further. 
 
-\
 
-**Discussion:**
+
+##**Discussion:**
 
 With the introduction of Chat GPT and the personalization of ads on social media, it was no surprise that our investigation showed that ML/AI jobs were paid more and in increasingly higher demand than Data Scientists/Analyst positions. As mentioned above in our results section, the majority of our initial hypothesis was confirmed. Therefore, on average, ML/AI jobs have higher salaries, regardless of whether the company is located in the US. In addition, the need for ML/AI jobs outside the US is increasing faster than the demand for Data Scientist/ Analyst positions. Surprisingly, that is not the case within the US. These results are interesting when assessing what jobs are most valued and in demand currently within the field of data science internationally and domestically. With these results, we can see how AI and machine learning seem to be the direction in which the data science field is currently going in.
 
